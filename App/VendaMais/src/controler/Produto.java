@@ -1,60 +1,68 @@
 package controler;
-class Produto {
+
+public class Produto {
+	private long idProd;
     private String nome;
-    private float valorVenda;
-    private float valorCampra;
+    private float precoVenda;
+    private float precoCompra;
     private Categoria categoria;
     private int qtdEstoque;
 
-    public void cadastrar(String nome, float valorVenda, float valorCampra, Categoria categoria, int qtdEstoque) {
+    public void cadastrar(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque) {
         this.nome = nome;
-        this.valorVenda = valorVenda;
-        this.valorCampra = valorCampra;
+        this.precoVenda = precoVenda;
+        this.precoCompra = precoCompra;
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
     }
 
-    public String getNome() {
-        return nome;
-    }
+	public long getIdProd() {
+		return idProd;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setIdProd(long idProd) {
+		this.idProd = idProd;
+	}
 
-    public float getValorVenda() {
-        return valorVenda;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setValorVenda(float valorVenda) {
-        this.valorVenda = valorVenda;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public float getValorCampra() {
-        return valorCampra;
-    }
+	public float getPrecoVenda() {
+		return precoVenda;
+	}
 
-    public void setValorCampra(float valorCampra) {
-        this.valorCampra = valorCampra;
-    }
+	public void setPrecoVenda(float precoVenda) {
+		this.precoVenda = precoVenda;
+	}
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+	public float getPrecoCompra() {
+		return precoCompra;
+	}
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
+	public void setPrecoCompra(float precoCompra) {
+		this.precoCompra = precoCompra;
+	}
 
-    public int getQtdEstoque() {
-        return qtdEstoque;
-    }
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-    public void setQtdEstoque(int qtdEstoque) {
-        this.qtdEstoque = qtdEstoque;
-    }
-    
-    
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public int getQtdEstoque() {
+		return qtdEstoque;
+	}
+
+	public void setQtdEstoque(int qtdEstoque) {
+		this.qtdEstoque = qtdEstoque;
+	}
 }
 
 

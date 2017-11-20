@@ -1,10 +1,11 @@
 package controler;
 public class Cliente {
+	private long id;
     private String nome;
     private String endereco;
     private String email;
     private String telefone;
-    
+    private String obs;
     
     public void comprar(Produto produto){
         
@@ -64,6 +65,18 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+	public String getObs() {
+		return obs;
+	}
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
     
     
 }
