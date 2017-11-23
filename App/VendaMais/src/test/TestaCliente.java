@@ -22,7 +22,7 @@ public class TestaCliente {
 		dao.save(cliente);
 		*/
 		
-		// Mostra busca tudo da tabela Cliente
+		// Mostra tudo da tabela Cliente
 		/*ArrayList<Cliente> clientes = dao.getList();
 		
 		for (Cliente cliente : clientes) {

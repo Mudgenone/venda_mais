@@ -28,7 +28,7 @@ private Connection con;
 			// preenche os valores
 			stmt.setString(1, produto.getNome());
 			stmt.setFloat(2, produto.getQtdEstoque());
-	        stmt.setFloat(3, produto.getPrecoCompra());
+			stmt.setFloat(3, produto.getPrecoCompra());
 	        stmt.setFloat(4, produto.getPrecoVenda());
 	        stmt.setLong(5, produto.getCategoria().getIdCat());
 	        
@@ -50,24 +50,24 @@ private Connection con;
 	
 			while (rs.next()) {
 				// criando o objeto produto
-	            Produto produto = new Produto();
-	            produto.setIdProd(rs.getLong("idprod"));
-	            produto.setNome(rs.getString("nome"));
-	            produto.setPrecoCompra(rs.getFloat("precocompra"));
-	            produto.setPrecoVenda(rs.getFloat("precovenda"));
-	            produto.setQtdEstoque(rs.getInt("qntestoque"));
+				Produto produto = new Produto();
+				produto.setIdProd(rs.getLong("idprod"));
+				produto.setNome(rs.getString("nomeprod"));
+				produto.setPrecoCompra(rs.getFloat("precocompra"));
+				produto.setPrecoVenda(rs.getFloat("precovenda"));
+				produto.setQtdEstoque(rs.getInt("qntestoque"));
 	            
-	            Categoria categoria = new Categoria();
-	            categoria.setIdCat(rs.getLong("idcat"));
-	            categoria.setNome(rs.getString("nomecat"));
-	            produto.setCategoria(categoria);
+				Categoria categoria = new Categoria();
+				categoria.setIdCat(rs.getLong("idcat"));
+				categoria.setNome(rs.getString("nomecat"));
+				produto.setCategoria(categoria);
 
-	            // adicionando o objeto à lista
-	            produtos.add(produto);
+				// adicionando o objeto à lista
+				produtos.add(produto);
 			}
 			rs.close();
-	        stmt.close();
-	        return produtos;
+			stmt.close();
+			return produtos;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -80,15 +80,15 @@ private Connection con;
 			PreparedStatement stmt = this.con.prepareStatement(sql);
 
 			stmt.setString(1, produto.getNome());
-	        stmt.setInt(2, produto.getQtdEstoque());
-	        stmt.setFloat(3, produto.getPrecoCompra());
-	        stmt.setFloat(4, produto.getPrecoVenda());
-	        stmt.setLong(5, produto.getCategoria().getIdCat());
-	        stmt.setLong(6, produto.getIdProd());
+			stmt.setInt(2, produto.getQtdEstoque());
+			stmt.setFloat(3, produto.getPrecoCompra());
+			stmt.setFloat(4, produto.getPrecoVenda());
+			stmt.setLong(5, produto.getCategoria().getIdCat());
+			stmt.setLong(6, produto.getIdProd());
 
-	        stmt.execute();
-	        stmt.close();
-	        System.out.println("Alterado!");
+			stmt.execute();
+			stmt.close();
+			System.out.println("Alterado!");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

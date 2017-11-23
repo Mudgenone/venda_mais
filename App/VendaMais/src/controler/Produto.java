@@ -7,6 +7,7 @@ public class Produto {
     private float precoCompra;
     private Categoria categoria;
     private int qtdEstoque;
+    private int qntVendida;
 
     public void cadastrar(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque) {
         this.nome = nome;
@@ -62,6 +63,14 @@ public class Produto {
 
 	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
+	}
+
+	public int getQntVendida() {
+		return qntVendida;
+	}
+
+	public void setQntVendida(int qntVendida) {
+		this.qntVendida = qntVendida;
 	}
 }
 
