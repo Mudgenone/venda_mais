@@ -48,7 +48,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(icon_cadastrarclientes);
         icon_cadastrarclientes.setBounds(30, 150, 80, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Home.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Home_1.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 680, 370);
 

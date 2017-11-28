@@ -16,6 +16,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
      */
     public Cadastrar_venda() {
         initComponents();
+        setSize(700, 366);
     }
 
     /**
@@ -27,21 +28,121 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        nao = new javax.swing.JRadioButton();
+        sim = new javax.swing.JRadioButton();
+        campo_data = new javax.swing.JTextField();
+        campo_precototal = new javax.swing.JTextField();
+        campo_parcelas = new javax.swing.JTextField();
+        campo_qtdproduto = new javax.swing.JTextField();
+        campo_nomeproduto = new javax.swing.JTextField();
+        campo_nomecliente = new javax.swing.JTextField();
+        botao_salvar = new javax.swing.JLabel();
+        icon_voltar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        nao.setText("Não");
+        getContentPane().add(nao);
+        nao.setBounds(540, 260, 50, 23);
+
+        sim.setText("Sim");
+        sim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sim);
+        sim.setBounds(490, 260, 50, 23);
+
+        campo_data.setBorder(null);
+        getContentPane().add(campo_data);
+        campo_data.setBounds(340, 260, 120, 20);
+
+        campo_precototal.setBorder(null);
+        campo_precototal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_precototalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campo_precototal);
+        campo_precototal.setBounds(340, 190, 290, 30);
+
+        campo_parcelas.setBorder(null);
+        getContentPane().add(campo_parcelas);
+        campo_parcelas.setBounds(340, 130, 280, 30);
+
+        campo_qtdproduto.setBorder(null);
+        campo_qtdproduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_qtdprodutoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campo_qtdproduto);
+        campo_qtdproduto.setBounds(30, 260, 280, 20);
+
+        campo_nomeproduto.setBorder(null);
+        getContentPane().add(campo_nomeproduto);
+        campo_nomeproduto.setBounds(20, 190, 290, 30);
+
+        campo_nomecliente.setBorder(null);
+        campo_nomecliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_nomeclienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campo_nomecliente);
+        campo_nomecliente.setBounds(20, 130, 290, 30);
+
+        botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_salvarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_salvar);
+        botao_salvar.setBounds(380, 290, 190, 60);
+
+        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_voltarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_voltar);
+        icon_voltar.setBounds(20, 30, 50, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda_1.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 660, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
+        Home tela = new Home();
+        tela.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_icon_voltarMouseClicked
+
+    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
+                // TODO add your handling code here:
+    }//GEN-LAST:event_botao_salvarMouseClicked
+
+    private void campo_nomeclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nomeclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_nomeclienteActionPerformed
+
+    private void campo_qtdprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_qtdprodutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_qtdprodutoActionPerformed
+
+    private void campo_precototalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_precototalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_precototalActionPerformed
+
+    private void simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +180,17 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botao_salvar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField campo_data;
+    private javax.swing.JTextField campo_nomecliente;
+    private javax.swing.JTextField campo_nomeproduto;
+    private javax.swing.JTextField campo_parcelas;
+    private javax.swing.JTextField campo_precototal;
+    private javax.swing.JTextField campo_qtdproduto;
+    private javax.swing.JLabel icon_voltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton nao;
+    private javax.swing.JRadioButton sim;
     // End of variables declaration//GEN-END:variables
 }

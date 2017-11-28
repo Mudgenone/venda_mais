@@ -16,6 +16,7 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
      */
     public Cadastrarc_cliente() {
         initComponents();
+        setSize(700, 366);
     }
 
     /**
@@ -27,21 +28,75 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        campo_observacao = new javax.swing.JTextField();
+        campo_email = new javax.swing.JTextField();
+        campo_telefone = new javax.swing.JTextField();
+        campo_endereco = new javax.swing.JTextField();
+        campo_nomenovocliente = new javax.swing.JTextField();
+        botao_salvar = new javax.swing.JLabel();
+        icon_voltar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        campo_observacao.setBorder(null);
+        getContentPane().add(campo_observacao);
+        campo_observacao.setBounds(340, 130, 290, 60);
+
+        campo_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_emailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campo_email);
+        campo_email.setBounds(30, 320, 280, 20);
+
+        campo_telefone.setBorder(null);
+        getContentPane().add(campo_telefone);
+        campo_telefone.setBounds(30, 260, 280, 14);
+
+        campo_endereco.setToolTipText("");
+        campo_endereco.setBorder(null);
+        campo_endereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_enderecoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(campo_endereco);
+        campo_endereco.setBounds(20, 190, 290, 30);
+        getContentPane().add(campo_nomenovocliente);
+        campo_nomenovocliente.setBounds(20, 130, 290, 30);
+        getContentPane().add(botao_salvar);
+        botao_salvar.setBounds(380, 260, 200, 60);
+
+        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_voltarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_voltar);
+        icon_voltar.setBounds(10, 30, 60, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar cliente.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 650, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
+        Home tela = new Home();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_icon_voltarMouseClicked
+
+    private void campo_enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_enderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_enderecoActionPerformed
+
+    private void campo_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_emailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +134,13 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botao_salvar;
+    private javax.swing.JTextField campo_email;
+    private javax.swing.JTextField campo_endereco;
+    private javax.swing.JTextField campo_nomenovocliente;
+    private javax.swing.JTextField campo_observacao;
+    private javax.swing.JTextField campo_telefone;
+    private javax.swing.JLabel icon_voltar;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

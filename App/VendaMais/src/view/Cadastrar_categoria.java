@@ -16,6 +16,7 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
      */
     public Cadastrar_categoria() {
         initComponents();
+        setSize(700, 366);
     }
 
     /**
@@ -27,21 +28,39 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        icon_voltar = new javax.swing.JLabel();
+        botao_salvar = new javax.swing.JLabel();
+        campo_nomecategoria = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_voltarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_voltar);
+        icon_voltar.setBounds(20, 30, 50, 50);
+        getContentPane().add(botao_salvar);
+        botao_salvar.setBounds(380, 260, 190, 70);
+
+        campo_nomecategoria.setBorder(null);
+        getContentPane().add(campo_nomecategoria);
+        campo_nomecategoria.setBounds(30, 140, 280, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar categoria.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 650, 370);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
+        Home tela = new Home();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_icon_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +98,9 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botao_salvar;
+    private javax.swing.JTextField campo_nomecategoria;
+    private javax.swing.JLabel icon_voltar;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
