@@ -27,14 +27,14 @@ public class ClienteDAO {
 			// preenche os valores
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getEndereco());
-	        stmt.setString(3, cliente.getEmail());
-	        stmt.setString(4, cliente.getTelefone());
-	        stmt.setString(5, cliente.getObs());
+			stmt.setString(3, cliente.getEmail());
+			stmt.setString(4, cliente.getTelefone());
+			stmt.setString(5, cliente.getObs());
 	        
-	        // executa
-	        stmt.execute();
-	        stmt.close();
-	        System.out.println("Salvo!");
+			// executa
+			stmt.execute();
+			stmt.close();
+			System.out.println("Salvo!");
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		} 
@@ -49,20 +49,20 @@ public class ClienteDAO {
 	
 			while (rs.next()) {
 				// criando o objeto Contato
-	            Cliente cliente = new Cliente();
-	            cliente.setId(rs.getLong("idcliente"));
-	            cliente.setNome(rs.getString("nome"));
-	            cliente.setEmail(rs.getString("email"));
-	            cliente.setTelefone(rs.getString("telefone"));
-	            cliente.setEndereco(rs.getString("endereco"));
-	            cliente.setObs(rs.getString("obs"));
+				Cliente cliente = new Cliente();
+				cliente.setId(rs.getLong("idcliente"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setTelefone(rs.getString("telefone"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setObs(rs.getString("obs"));
 
-	            // adicionando o objeto à lista
-	            clientes.add(cliente);
+				// adicionando o objeto à lista
+				clientes.add(cliente);
 			}
 			rs.close();
-	        stmt.close();
-	        return clientes;
+			stmt.close();
+			return clientes;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -75,15 +75,15 @@ public class ClienteDAO {
 			PreparedStatement stmt = this.con.prepareStatement(sql);
 
 			stmt.setString(1, cliente.getNome());
-	        stmt.setString(2, cliente.getEmail());
-	        stmt.setString(3, cliente.getEndereco());
-	        stmt.setString(4, cliente.getTelefone());
-	        stmt.setString(5, cliente.getObs());
-	        stmt.setLong(6, cliente.getId());
+			stmt.setString(2, cliente.getEmail());
+			stmt.setString(3, cliente.getEndereco());
+			stmt.setString(4, cliente.getTelefone());
+			stmt.setString(5, cliente.getObs());
+			stmt.setLong(6, cliente.getId());
 
-	        stmt.execute();
-	        stmt.close();
-	        System.out.println("Alterado!");
+			stmt.execute();
+			stmt.close();
+			System.out.println("Alterado!");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

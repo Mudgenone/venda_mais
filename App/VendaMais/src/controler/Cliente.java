@@ -10,7 +10,7 @@ public class Cliente {
     public void comprar(Produto produto){
         
     }
-    public void pagar(Compra compra, double valor){
+    public void pagar(Venda venda, double valor){
         
     }
     public void cadastrar(String nome, String endereco, String email, String telefone){
