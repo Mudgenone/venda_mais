@@ -28,10 +28,25 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icon_principalalterardados = new javax.swing.JLabel();
+        icon_cadastrarvenda = new javax.swing.JLabel();
+        icon_cadastrarproduto = new javax.swing.JLabel();
+        icon_cadastrarcategoria = new javax.swing.JLabel();
+        icon_cadastrarclientes = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+        getContentPane().add(icon_principalalterardados);
+        icon_principalalterardados.setBounds(420, 10, 100, 90);
+        getContentPane().add(icon_cadastrarvenda);
+        icon_cadastrarvenda.setBounds(290, 154, 70, 70);
+        getContentPane().add(icon_cadastrarproduto);
+        icon_cadastrarproduto.setBounds(204, 154, 70, 70);
+        getContentPane().add(icon_cadastrarcategoria);
+        icon_cadastrarcategoria.setBounds(120, 154, 70, 70);
+        getContentPane().add(icon_cadastrarclientes);
+        icon_cadastrarclientes.setBounds(30, 150, 80, 70);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Home.png"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -74,8 +89,38 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void icon_cadastrarclienteMouseClicked(java.awt.event.MouseEvent evt) {                                                   
+        Cadastrarc_cliente tela = new Cadastrarc_cliente();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }                                                  
+
+    private void icon_cadastrarcategoriaMouseClicked(java.awt.event.MouseEvent evt) {                                                     
+        Cadastrar_categoria tela = new Cadastrar_categoria();
+        tela.setVisible(true);// TODO add your handling code here:
+    }                                                    
+
+    private void icon_cadastrarprodutoMouseClicked(java.awt.event.MouseEvent evt) {                                                   
+        Cadastrar_produto tela = new Cadastrar_produto();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }                                                  
+
+    private void icon_cadastrarvendaMouseClicked(java.awt.event.MouseEvent evt) {                                                 
+        Cadastrar_venda tela = new Cadastrar_venda();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }                                                
+
+    private void icon_principalalterardadosMouseClicked(java.awt.event.MouseEvent evt) {                                                        
+        Principal_alterardados tela = new Principal_alterardados();
+        tela.setVisible(true);// TODO add your handling code here:
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel icon_cadastrarcategoria;
+    private javax.swing.JLabel icon_cadastrarclientes;
+    private javax.swing.JLabel icon_cadastrarproduto;
+    private javax.swing.JLabel icon_cadastrarvenda;
+    private javax.swing.JLabel icon_principalalterardados;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
