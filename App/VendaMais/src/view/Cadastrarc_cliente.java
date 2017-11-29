@@ -53,11 +53,11 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_email);
-        campo_email.setBounds(30, 320, 280, 14);
+        campo_email.setBounds(20, 320, 290, 30);
 
         campo_telefone.setBorder(null);
         getContentPane().add(campo_telefone);
-        campo_telefone.setBounds(30, 260, 280, 14);
+        campo_telefone.setBounds(20, 254, 290, 30);
 
         campo_endereco.setToolTipText("");
         campo_endereco.setBorder(null);
@@ -68,6 +68,8 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
         });
         getContentPane().add(campo_endereco);
         campo_endereco.setBounds(20, 190, 290, 30);
+
+        campo_nomenovocliente.setBorder(null);
         getContentPane().add(campo_nomenovocliente);
         campo_nomenovocliente.setBounds(20, 130, 290, 30);
 
@@ -87,7 +89,7 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(10, 30, 60, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar cliente.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar cliente_1.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 360);
 

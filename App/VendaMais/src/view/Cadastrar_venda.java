@@ -37,8 +37,6 @@ public class Cadastrar_venda extends javax.swing.JFrame {
         campo_precototal = new javax.swing.JTextField();
         campo_parcelas = new javax.swing.JTextField();
         campo_qtdproduto = new javax.swing.JTextField();
-        campo_nomeproduto = new javax.swing.JTextField();
-        campo_nomecliente = new javax.swing.JTextField();
         botao_salvar = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -48,7 +46,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
 
         nao.setText("Não");
         getContentPane().add(nao);
-        nao.setBounds(540, 260, 50, 23);
+        nao.setBounds(180, 300, 50, 23);
 
         sim.setText("Sim");
         sim.addActionListener(new java.awt.event.ActionListener() {
@@ -57,11 +55,11 @@ public class Cadastrar_venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sim);
-        sim.setBounds(490, 260, 50, 23);
+        sim.setBounds(130, 300, 50, 23);
 
         campo_data.setBorder(null);
         getContentPane().add(campo_data);
-        campo_data.setBounds(340, 260, 120, 20);
+        campo_data.setBounds(130, 230, 100, 30);
 
         campo_precototal.setBorder(null);
         campo_precototal.addActionListener(new java.awt.event.ActionListener() {
@@ -70,11 +68,11 @@ public class Cadastrar_venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_precototal);
-        campo_precototal.setBounds(340, 190, 290, 30);
+        campo_precototal.setBounds(20, 300, 70, 30);
 
         campo_parcelas.setBorder(null);
         getContentPane().add(campo_parcelas);
-        campo_parcelas.setBounds(340, 130, 280, 30);
+        campo_parcelas.setBounds(20, 230, 70, 30);
 
         campo_qtdproduto.setBorder(null);
         campo_qtdproduto.addActionListener(new java.awt.event.ActionListener() {
@@ -83,20 +81,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_qtdproduto);
-        campo_qtdproduto.setBounds(30, 260, 280, 20);
-
-        campo_nomeproduto.setBorder(null);
-        getContentPane().add(campo_nomeproduto);
-        campo_nomeproduto.setBounds(20, 190, 290, 30);
-
-        campo_nomecliente.setBorder(null);
-        campo_nomecliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_nomeclienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(campo_nomecliente);
-        campo_nomecliente.setBounds(20, 130, 290, 30);
+        campo_qtdproduto.setBounds(340, 230, 90, 30);
 
         botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,7 +99,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(20, 30, 50, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 660, 360);
 
@@ -129,10 +114,6 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_salvarMouseClicked
-
-    private void campo_nomeclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nomeclienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nomeclienteActionPerformed
 
     private void campo_qtdprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_qtdprodutoActionPerformed
         // TODO add your handling code here:
@@ -185,8 +166,6 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     private javax.swing.JLabel botao_salvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField campo_data;
-    private javax.swing.JTextField campo_nomecliente;
-    private javax.swing.JTextField campo_nomeproduto;
     private javax.swing.JTextField campo_parcelas;
     private javax.swing.JTextField campo_precototal;
     private javax.swing.JTextField campo_qtdproduto;

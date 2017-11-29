@@ -32,7 +32,6 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
         botao_salvar = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
-        campo_categoria = new javax.swing.JTextField();
         campo_precovenda = new javax.swing.JTextField();
         campo_precocompra = new javax.swing.JTextField();
         campo_nomeproduto = new javax.swing.JTextField();
@@ -57,15 +56,6 @@ public class Cadastrar_produto extends javax.swing.JFrame {
         });
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(20, 20, 50, 50);
-
-        campo_categoria.setBorder(null);
-        campo_categoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_categoriaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(campo_categoria);
-        campo_categoria.setBounds(350, 130, 270, 20);
 
         campo_precovenda.setBorder(null);
         getContentPane().add(campo_precovenda);
@@ -98,7 +88,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
         getContentPane().add(campo_qtdestoque);
         campo_qtdestoque.setBounds(30, 190, 280, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar produto.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar produto_1.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 350);
 
@@ -116,10 +106,6 @@ public class Cadastrar_produto extends javax.swing.JFrame {
     private void campo_precocompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_precocompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campo_precocompraActionPerformed
-
-    private void campo_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_categoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_categoriaActionPerformed
 
     private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
         Home tela = new Home();
@@ -167,7 +153,6 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botao_salvar;
-    private javax.swing.JTextField campo_categoria;
     private javax.swing.JTextField campo_nomeproduto;
     private javax.swing.JTextField campo_precocompra;
     private javax.swing.JTextField campo_precovenda;
