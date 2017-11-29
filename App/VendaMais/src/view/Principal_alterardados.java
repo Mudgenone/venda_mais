@@ -16,7 +16,7 @@ public class Principal_alterardados extends javax.swing.JFrame {
      */
     public Principal_alterardados() {
         initComponents();
-        setSize(700, 366);
+        setSize(668, 402);
     }
 
     /**
@@ -28,17 +28,31 @@ public class Principal_alterardados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Alterar dados cadastrados.png"))); // NOI18N
+        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_voltarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_voltar);
+        icon_voltar.setBounds(10, 30, 60, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Alterar dados cadastrados_1.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 370);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
+        Home tela = new Home();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_icon_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -76,6 +90,7 @@ public class Principal_alterardados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

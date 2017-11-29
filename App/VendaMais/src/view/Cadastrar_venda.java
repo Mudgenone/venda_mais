@@ -5,6 +5,8 @@
  */
 package view;
 
+import controler.Venda;
+
 /**
  *
  * @author ander
@@ -16,7 +18,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
      */
     public Cadastrar_venda() {
         initComponents();
-        setSize(700, 366);
+        setSize(668, 402);
     }
 
     /**
@@ -125,7 +127,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
-                // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_botao_salvarMouseClicked
 
     private void campo_nomeclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nomeclienteActionPerformed

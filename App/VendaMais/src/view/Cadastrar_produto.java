@@ -5,6 +5,8 @@
  */
 package view;
 
+import controler.Produto;
+
 /**
  *
  * @author ander
@@ -16,7 +18,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
      */
     public Cadastrar_produto() {
         initComponents();
-        setSize(700, 366);
+        setSize(668, 402);
     }
 
     /**
@@ -39,6 +41,12 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_salvarMouseClicked(evt);
+            }
+        });
         getContentPane().add(botao_salvar);
         botao_salvar.setBounds(380, 250, 200, 70);
 
@@ -117,6 +125,10 @@ public class Cadastrar_produto extends javax.swing.JFrame {
         Home tela = new Home();
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
+
+    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_salvarMouseClicked
 
     /**
      * @param args the command line arguments

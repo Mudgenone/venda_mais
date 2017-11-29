@@ -5,6 +5,8 @@
  */
 package view;
 
+import controler.Cliente;
+
 /**
  *
  * @author ander
@@ -16,7 +18,7 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
      */
     public Cadastrarc_cliente() {
         initComponents();
-        setSize(700, 366);
+        setSize(668, 402);
     }
 
     /**
@@ -44,13 +46,14 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
         getContentPane().add(campo_observacao);
         campo_observacao.setBounds(340, 130, 290, 60);
 
+        campo_email.setBorder(null);
         campo_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_emailActionPerformed(evt);
             }
         });
         getContentPane().add(campo_email);
-        campo_email.setBounds(30, 320, 280, 20);
+        campo_email.setBounds(30, 320, 280, 14);
 
         campo_telefone.setBorder(null);
         getContentPane().add(campo_telefone);
@@ -67,6 +70,12 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
         campo_endereco.setBounds(20, 190, 290, 30);
         getContentPane().add(campo_nomenovocliente);
         campo_nomenovocliente.setBounds(20, 130, 290, 30);
+
+        botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_salvarMouseClicked(evt);
+            }
+        });
         getContentPane().add(botao_salvar);
         botao_salvar.setBounds(380, 260, 200, 60);
 
@@ -97,6 +106,11 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
     private void campo_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campo_emailActionPerformed
+
+    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
+        Cliente cadastrar_cliente = new Cliente();
+        cadastrar_cliente.cadastrar(campo_nomenovocliente.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText());    // TODO add your handling code here:
+    }//GEN-LAST:event_botao_salvarMouseClicked
 
     /**
      * @param args the command line arguments

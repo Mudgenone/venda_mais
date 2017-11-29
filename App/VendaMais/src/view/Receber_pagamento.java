@@ -5,18 +5,16 @@
  */
 package view;
 
-import controler.Categoria;
-
 /**
  *
  * @author ander
  */
-public class Cadastrar_categoria extends javax.swing.JFrame {
+public class Receber_pagamento extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cadastrar_categoria
+     * Creates new form Receber_pagamento
      */
-    public Cadastrar_categoria() {
+    public Receber_pagamento() {
         initComponents();
         setSize(668, 402);
     }
@@ -30,21 +28,40 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        icon_voltar = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        campo_valor = new javax.swing.JTextField();
+        campo_data = new javax.swing.JTextField();
         botao_salvar = new javax.swing.JLabel();
-        campo_nomecategoria = new javax.swing.JTextField();
+        icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_voltarMouseClicked(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-        getContentPane().add(icon_voltar);
-        icon_voltar.setBounds(20, 30, 50, 50);
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 140, 320, 200);
+
+        campo_valor.setBorder(null);
+        getContentPane().add(campo_valor);
+        campo_valor.setBounds(510, 140, 120, 20);
+
+        campo_data.setBorder(null);
+        getContentPane().add(campo_data);
+        campo_data.setBounds(350, 140, 130, 20);
 
         botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -54,26 +71,29 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
         getContentPane().add(botao_salvar);
         botao_salvar.setBounds(380, 260, 190, 70);
 
-        campo_nomecategoria.setBorder(null);
-        getContentPane().add(campo_nomecategoria);
-        campo_nomecategoria.setBounds(30, 140, 280, 20);
+        icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_voltarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_voltar);
+        icon_voltar.setBounds(10, 30, 50, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar categoria.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Receber pagamento.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 370);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
+            // TODO add your handling code here:
+    }//GEN-LAST:event_botao_salvarMouseClicked
+
     private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
         Home tela = new Home();
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
-
-    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
-        Categoria nova_categoria = new Categoria();
-        nova_categoria.cadastrar();        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_salvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -92,28 +112,31 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_categoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receber_pagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_categoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receber_pagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_categoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receber_pagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_categoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receber_pagamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastrar_categoria().setVisible(true);
+                new Receber_pagamento().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botao_salvar;
-    private javax.swing.JTextField campo_nomecategoria;
+    private javax.swing.JTextField campo_data;
+    private javax.swing.JTextField campo_valor;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
