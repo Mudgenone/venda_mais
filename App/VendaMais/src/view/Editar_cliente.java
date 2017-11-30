@@ -5,6 +5,10 @@
  */
 package view;
 
+import dao.ClienteDAO;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author ander
@@ -16,7 +20,28 @@ public class Editar_cliente extends javax.swing.JFrame {
      */
     public Editar_cliente() {
         initComponents();
-        setSize(668, 402);
+        setSize(668, 402);        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        tabela_cliente.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+    }
+    
+    public void readJTable() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        modelo.setNumRows(0);
+        ClienteDAO cliente = new ClienteDAO();
+
+        cliente.getList().forEach((c) -> {
+            modelo.addRow(new Object[]{
+                c.getNome(),
+                c.getTelefone(),
+                c.getEndereco(),
+                c.getEmail()
+            });
+        });
+
     }
 
     /**
@@ -28,6 +53,8 @@ public class Editar_cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_cliente = new javax.swing.JTable();
         icon_voltar = new javax.swing.JLabel();
         campo_observacao = new javax.swing.JTextField();
         campo_email = new javax.swing.JTextField();
@@ -38,6 +65,30 @@ public class Editar_cliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        tabela_cliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Telefone", "Endereco", "Email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela_cliente);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 100, 310, 230);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,5 +171,7 @@ public class Editar_cliente extends javax.swing.JFrame {
     private javax.swing.JTextField campo_telefone;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela_cliente;
     // End of variables declaration//GEN-END:variables
 }

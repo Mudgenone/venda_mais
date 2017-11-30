@@ -5,7 +5,9 @@
  */
 package view;
 
-import controler.Cliente;
+import dao.ClienteDAO;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +21,28 @@ public class Listar_clientes extends javax.swing.JFrame {
     public Listar_clientes() {
         initComponents();
         setSize(668, 402);
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        tabela_cliente.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+    }
+    
+    public void readJTable() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        modelo.setNumRows(0);
+        ClienteDAO cliente = new ClienteDAO();
+
+        cliente.getList().forEach((c) -> {
+            modelo.addRow(new Object[]{
+                c.getNome(),
+                c.getTelefone(),
+                c.getEndereco(),
+                c.getEmail(),
+                c.getObs()
+            });
+        });
+
     }
 
     /**
@@ -30,11 +54,37 @@ public class Listar_clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_cliente = new javax.swing.JTable();
         icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        tabela_cliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Telefone", "Endereco", "Email", "Observacao"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela_cliente);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 110, 570, 210);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,5 +144,7 @@ public class Listar_clientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela_cliente;
     // End of variables declaration//GEN-END:variables
 }
