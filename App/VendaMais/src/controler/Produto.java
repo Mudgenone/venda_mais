@@ -1,5 +1,7 @@
 package controler;
 
+import dao.ProdutoDAO;
+
 public class Produto {
 	private long idProd;
     private String nome;
@@ -9,13 +11,60 @@ public class Produto {
     private int qtdEstoque;
     private int qntVendida;
 
-    public void cadastrar(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque) {
+    public String create(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque) {
+        if(nome.length()>40){
+            return "Seu nome tem mais de 80 carecteres, por favor digite um nome menor!";
+        }
+        if (precoCompra < 0){
+            return "Valor do preço de compra não pode ser menor que 0!";
+        }
+        if(precoVenda < 0){
+            return "Valor do preço de venda não pode ser menor que 0!";
+        }
+        if(qtdEstoque < 0){
+            return "Sua quantidade de estoque esta menor que 0, faça novas compras!";
+        }
+        
         this.nome = nome;
         this.precoVenda = precoVenda;
         this.precoCompra = precoCompra;
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
+        
+        ProdutoDAO produt = new ProdutoDAO();
+        produt.save(this);
+        return "Cadastro realizado com sucesso!!!";
     }
+    public String update(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque){
+        if(nome.length()>40){
+            return "Seu nome tem mais de 80 carecteres, por favor digite um nome menor!";
+        }
+        if (precoCompra < 0){
+            return "Valor do preço de compra não pode ser menor que 0!";
+        }
+        if(precoVenda < 0){
+            return "Valor do preço de venda não pode ser menor que 0!";
+        }
+        if(qtdEstoque < 0){
+            return "Sua quantidade de estoque esta menor que 0, faça novas compras!";
+        }
+        
+        this.nome = nome;
+        this.precoVenda = precoVenda;
+        this.precoCompra = precoCompra;
+        this.categoria = categoria;
+        this.qtdEstoque = qtdEstoque;
+        
+        ProdutoDAO produt = new ProdutoDAO();
+        produt.update(this);
+        return "Mudança realizado com sucesso!!!";
+    }
+    public boolean remove(Produto produto){
+        ProdutoDAO produt = new ProdutoDAO();
+        produt.remove(produto);
+        return true;
+    }
+    
 
 	public long getIdProd() {
 		return idProd;
