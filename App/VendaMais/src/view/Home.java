@@ -28,6 +28,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icon_relatorioclientes = new javax.swing.JLabel();
         icon_receberpagamento = new javax.swing.JLabel();
         icon_principalalterardados = new javax.swing.JLabel();
         icon_cadastrarvenda = new javax.swing.JLabel();
@@ -38,6 +39,14 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        icon_relatorioclientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_relatorioclientesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_relatorioclientes);
+        icon_relatorioclientes.setBounds(200, 270, 80, 70);
 
         icon_receberpagamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,6 +133,11 @@ public class Home extends javax.swing.JFrame {
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_receberpagamentoMouseClicked
 
+    private void icon_relatorioclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_relatorioclientesMouseClicked
+        Listar_clientes tela = new Listar_clientes();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_icon_relatorioclientesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -166,6 +180,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel icon_cadastrarvenda;
     private javax.swing.JLabel icon_principalalterardados;
     private javax.swing.JLabel icon_receberpagamento;
+    private javax.swing.JLabel icon_relatorioclientes;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

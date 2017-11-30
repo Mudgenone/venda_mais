@@ -9,12 +9,12 @@ package view;
  *
  * @author ander
  */
-public class Principal_alterardados extends javax.swing.JFrame {
+public class Editar_cliente extends javax.swing.JFrame {
 
     /**
-     * Creates new form Principal_alterardados
+     * Creates new form Editar_cliente
      */
-    public Principal_alterardados() {
+    public Editar_cliente() {
         initComponents();
         setSize(668, 402);
     }
@@ -28,20 +28,16 @@ public class Principal_alterardados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        icon_alterarclientes = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
+        campo_observacao = new javax.swing.JTextField();
+        campo_email = new javax.swing.JTextField();
+        campo_endereco = new javax.swing.JTextField();
+        campo_telefone = new javax.swing.JTextField();
+        campo_nome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        icon_alterarclientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_alterarclientesMouseClicked(evt);
-            }
-        });
-        getContentPane().add(icon_alterarclientes);
-        icon_alterarclientes.setBounds(30, 150, 80, 80);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -50,23 +46,36 @@ public class Principal_alterardados extends javax.swing.JFrame {
         });
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(10, 30, 60, 50);
+        getContentPane().add(campo_observacao);
+        campo_observacao.setBounds(340, 270, 300, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Alterar dados cadastrados_1.png"))); // NOI18N
+        campo_email.setBorder(null);
+        getContentPane().add(campo_email);
+        campo_email.setBounds(520, 200, 120, 30);
+
+        campo_endereco.setBorder(null);
+        getContentPane().add(campo_endereco);
+        campo_endereco.setBounds(340, 200, 150, 30);
+
+        campo_telefone.setBorder(null);
+        getContentPane().add(campo_telefone);
+        campo_telefone.setBounds(520, 140, 120, 30);
+
+        campo_nome.setBorder(null);
+        getContentPane().add(campo_nome);
+        campo_nome.setBounds(340, 140, 150, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Editar cliente.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 650, 370);
+        jLabel1.setBounds(0, 0, 650, 366);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
-        Home tela = new Home();
+        Principal_alterardados tela = new Principal_alterardados();
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
-
-    private void icon_alterarclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_alterarclientesMouseClicked
-        Editar_cliente tela = new Editar_cliente();
-        tela.setVisible(true);       // TODO add your handling code here:
-    }//GEN-LAST:event_icon_alterarclientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -85,26 +94,30 @@ public class Principal_alterardados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal_alterardados().setVisible(true);
+                new Editar_cliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel icon_alterarclientes;
+    private javax.swing.JTextField campo_email;
+    private javax.swing.JTextField campo_endereco;
+    private javax.swing.JTextField campo_nome;
+    private javax.swing.JTextField campo_observacao;
+    private javax.swing.JTextField campo_telefone;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

@@ -5,16 +5,18 @@
  */
 package view;
 
+import controler.Cliente;
+
 /**
  *
  * @author ander
  */
-public class Principal_alterardados extends javax.swing.JFrame {
+public class Listar_clientes extends javax.swing.JFrame {
 
     /**
-     * Creates new form Principal_alterardados
+     * Creates new form Listar_clientes
      */
-    public Principal_alterardados() {
+    public Listar_clientes() {
         initComponents();
         setSize(668, 402);
     }
@@ -28,20 +30,11 @@ public class Principal_alterardados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        icon_alterarclientes = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        icon_alterarclientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_alterarclientesMouseClicked(evt);
-            }
-        });
-        getContentPane().add(icon_alterarclientes);
-        icon_alterarclientes.setBounds(30, 150, 80, 80);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -49,11 +42,11 @@ public class Principal_alterardados extends javax.swing.JFrame {
             }
         });
         getContentPane().add(icon_voltar);
-        icon_voltar.setBounds(10, 30, 60, 50);
+        icon_voltar.setBounds(20, 20, 50, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Alterar dados cadastrados_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Listrar clientes.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 650, 370);
+        jLabel1.setBounds(0, 0, 650, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -62,11 +55,6 @@ public class Principal_alterardados extends javax.swing.JFrame {
         Home tela = new Home();
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
-
-    private void icon_alterarclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_alterarclientesMouseClicked
-        Editar_cliente tela = new Editar_cliente();
-        tela.setVisible(true);       // TODO add your handling code here:
-    }//GEN-LAST:event_icon_alterarclientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -85,26 +73,25 @@ public class Principal_alterardados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Listar_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Listar_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Listar_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal_alterardados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Listar_clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal_alterardados().setVisible(true);
+                new Listar_clientes().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel icon_alterarclientes;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
