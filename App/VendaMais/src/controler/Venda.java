@@ -1,23 +1,25 @@
 package controler;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class Venda {
 	private long idVenda;
     private Cliente cliente;
     private int parcelas;
     private boolean pago;
     private double precoTotal;
-    private Produto[] produto;
+    private ArrayList <Produto> produto;
+    private Date dataVenda; 
 
-    public void cadVenda(Cliente cliente, int parcelas, double precoTotal, Produto[] produto) {
+    public void cadVenda(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produto) {
         this.cliente = cliente;
         this.parcelas = parcelas;
         this.pago = false;
         this.precoTotal = precoTotal;
         this.produto = produto;
     }
-    
-    
-
+   
     public Cliente getCliente() {
         return cliente;
     }
@@ -50,11 +52,11 @@ public class Venda {
         this.precoTotal = prcoTotal;
     }
 
-    public Produto[] getProduto() {
+    public ArrayList<Produto> getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto[] produto) {
+    public void setProduto(ArrayList<Produto> produto) {
         this.produto = produto;
     }
 
@@ -64,6 +66,14 @@ public class Venda {
 
 	public void setIdVenda(long idVenda) {
 		this.idVenda = idVenda;
+	}
+
+	public Date getDataVenda() {
+		return dataVenda;
+	}
+
+	public void setDataVenda(Date dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 }
 
