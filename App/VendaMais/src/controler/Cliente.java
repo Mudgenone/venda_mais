@@ -14,7 +14,7 @@ public class Cliente {
     public void pagar(Venda venda, double valor){
         
     }
-    public String create(String nome, String endereco, String email, String telefone){
+    public String create(String nome, String endereco, String email, String telefone, String obs){
         if (nome.length()>50){
             return "Seu nome tem mais de 50 caractere, por favor digite um nome menor!";
         }
@@ -27,17 +27,21 @@ public class Cliente {
         if (telefone.length()>12){
             return "Seu nome tem mais de 12 caracteres, por favor digite um numero valido EX.:82900000000!";
         }
+        if (obs.length()>255){
+            return "Faça uma observação com até 255 caracteres!";
+        }
         
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
+        this.obs = obs;
      
         ClienteDAO client = new ClienteDAO();
         client.save(this);
         return "Cadastro realizado com sucesso!!!";
     }
-    public String update(String nome, String endereco, String email, String telefone){
+    public String update(long ID, String nome, String endereco, String email, String telefone, String obs){
         if (nome.length()>50){
             return "Seu nome tem mais de 50 caractere, por favor digite um nome menor!";
         }
@@ -50,11 +54,16 @@ public class Cliente {
         if (telefone.length()>12){
             return "Seu nome tem mais de 12 caracteres, por favor digite um numero valido EX.:82900000000!";
         }
+        if (obs.length()>255){
+            return "Faça uma observação com até 255 caracteres!";
+        }
         
+        this.id = ID;
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
+        this.obs = obs;
      
         ClienteDAO client = new ClienteDAO();
         client.update(this);

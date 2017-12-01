@@ -5,7 +5,9 @@
  */
 package view;
 
+import controler.Cliente;
 import dao.ClienteDAO;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -14,6 +16,9 @@ import javax.swing.table.TableRowSorter;
  * @author ander
  */
 public class Editar_cliente extends javax.swing.JFrame {
+    
+    Cliente cliente;
+    long id;
 
     /**
      * Creates new form Editar_cliente
@@ -35,13 +40,14 @@ public class Editar_cliente extends javax.swing.JFrame {
 
         cliente.getList().forEach((c) -> {
             modelo.addRow(new Object[]{
+                c.getId(),
                 c.getNome(),
                 c.getTelefone(),
                 c.getEndereco(),
-                c.getEmail()
+                c.getEmail(),
+                c.getObs()
             });
         });
-
     }
 
     /**
@@ -53,6 +59,8 @@ public class Editar_cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botao_deletar = new javax.swing.JLabel();
+        botao_salvar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_cliente = new javax.swing.JTable();
         icon_voltar = new javax.swing.JLabel();
@@ -64,25 +72,53 @@ public class Editar_cliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
+
+        botao_deletar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_deletarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_deletar);
+        botao_deletar.setBounds(370, 30, 110, 50);
+
+        botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_salvarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_salvar);
+        botao_salvar.setBounds(500, 30, 130, 50);
 
         tabela_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Telefone", "Endereco", "Email"
+                "ID", "Nome", "Telefone", "Endereco", "Email", "Observacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabela_cliente.getTableHeader().setReorderingAllowed(false);
+        tabela_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabela_clienteMouseClicked(evt);
+            }
+        });
+        tabela_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabela_clienteKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabela_clienteKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tabela_cliente);
@@ -128,6 +164,79 @@ public class Editar_cliente extends javax.swing.JFrame {
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
 
+    private void botao_deletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_deletarMouseClicked
+        Cliente deletar = new Cliente();
+        if(deletar.remove(this.cliente)){
+            JOptionPane.showMessageDialog(null, "Deletado com sucesso");
+        }
+        
+        readJTable();
+        
+        campo_nome.setText("");
+        campo_telefone.setText("");
+        campo_endereco.setText("");
+        campo_email.setText("");
+        campo_observacao.setText("");
+    }//GEN-LAST:event_botao_deletarMouseClicked
+
+    private void tabela_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_clienteMouseClicked
+        int k = tabela_cliente.getSelectedRow();
+            long ID = (long) tabela_cliente.getValueAt(k, 0);
+            ClienteDAO categoria = new ClienteDAO();
+        
+            categoria.getList().forEach((c) -> {
+                if(c.getId() == ID){
+                    this.cliente = c;
+                }
+        });
+            
+        if(tabela_cliente.getSelectedRow() != -1){
+            campo_nome.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 1).toString());
+            campo_telefone.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 2).toString());
+            campo_endereco.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 3).toString());
+            campo_email.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 4).toString());
+            campo_observacao.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 5).toString());
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_tabela_clienteMouseClicked
+
+    private void tabela_clienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabela_clienteKeyPressed
+        if(tabela_cliente.getSelectedRow() != -1){
+            campo_nome.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 1).toString());
+            campo_telefone.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 2).toString());
+            campo_endereco.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 3).toString());
+            campo_email.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 4).toString());
+            campo_observacao.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 5).toString());
+        }      // TODO add your handling code here:
+    }//GEN-LAST:event_tabela_clienteKeyPressed
+
+    private void tabela_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabela_clienteKeyReleased
+       if(tabela_cliente.getSelectedRow() != -1){
+            this.id = Long.parseLong(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 0).toString());
+            campo_nome.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 1).toString());
+            campo_telefone.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 2).toString());
+            campo_endereco.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 3).toString());
+            campo_email.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 4).toString());
+            campo_observacao.setText(tabela_cliente.getValueAt(tabela_cliente.getSelectedRow(), 5).toString());
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_tabela_clienteKeyReleased
+
+    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
+        Cliente editar_cliente = new Cliente();
+        System.out.println(this.id);
+        String retorno = editar_cliente.update(this.id, campo_nome.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText(), campo_observacao.getText());
+        JOptionPane.showMessageDialog(null, retorno);
+        
+        
+        readJTable();
+        
+        campo_nome.setText("");
+        campo_telefone.setText("");
+        campo_endereco.setText("");
+        campo_email.setText("");
+        campo_observacao.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_salvarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -164,6 +273,8 @@ public class Editar_cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botao_deletar;
+    private javax.swing.JLabel botao_salvar;
     private javax.swing.JTextField campo_email;
     private javax.swing.JTextField campo_endereco;
     private javax.swing.JTextField campo_nome;

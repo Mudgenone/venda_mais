@@ -28,12 +28,21 @@ public class Principal_alterardados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icon_alterarproduto = new javax.swing.JLabel();
         icon_alterarclientes = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        icon_alterarproduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_alterarprodutoMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_alterarproduto);
+        icon_alterarproduto.setBounds(200, 150, 80, 70);
 
         icon_alterarclientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -67,6 +76,11 @@ public class Principal_alterardados extends javax.swing.JFrame {
         Editar_cliente tela = new Editar_cliente();
         tela.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_icon_alterarclientesMouseClicked
+
+    private void icon_alterarprodutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_alterarprodutoMouseClicked
+        Editar_produto tela = new Editar_produto(); 
+        tela.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_icon_alterarprodutoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -105,6 +119,7 @@ public class Principal_alterardados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icon_alterarclientes;
+    private javax.swing.JLabel icon_alterarproduto;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

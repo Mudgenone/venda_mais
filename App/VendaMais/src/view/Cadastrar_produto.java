@@ -5,13 +5,22 @@
  */
 package view;
 
+import controler.Categoria;
 import controler.Produto;
+import dao.CategoriaDAO;
+import dao.ClienteDAO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ander
  */
 public class Cadastrar_produto extends javax.swing.JFrame {
+    
+    Categoria categoria;
 
     /**
      * Creates new form Cadastrar_produto
@@ -19,6 +28,25 @@ public class Cadastrar_produto extends javax.swing.JFrame {
     public Cadastrar_produto() {
         initComponents();
         setSize(668, 402);
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_categoria.getModel();
+        tabela_categoria.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+    }
+    
+    public void readJTable() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_categoria.getModel();
+        modelo.setNumRows(0);
+        CategoriaDAO categoria = new CategoriaDAO();
+        
+        categoria.getList().forEach((c) -> {
+            modelo.addRow(new Object[]{
+                c.getIdCat(),
+                c.getNome()
+            });
+        });
     }
 
     /**
@@ -30,6 +58,8 @@ public class Cadastrar_produto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_categoria = new javax.swing.JTable();
         botao_salvar = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
         campo_precovenda = new javax.swing.JTextField();
@@ -40,6 +70,33 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        tabela_categoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela_categoria.getTableHeader().setReorderingAllowed(false);
+        tabela_categoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabela_categoriaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela_categoria);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(340, 130, 290, 100);
 
         botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,7 +116,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
         campo_precovenda.setBorder(null);
         getContentPane().add(campo_precovenda);
-        campo_precovenda.setBounds(20, 310, 290, 30);
+        campo_precovenda.setBounds(30, 320, 280, 30);
 
         campo_precocompra.setBorder(null);
         campo_precocompra.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +125,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_precocompra);
-        campo_precocompra.setBounds(30, 250, 280, 20);
+        campo_precocompra.setBounds(30, 250, 280, 30);
 
         campo_nomeproduto.setBorder(null);
         campo_nomeproduto.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +134,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_nomeproduto);
-        campo_nomeproduto.setBounds(30, 130, 280, 20);
+        campo_nomeproduto.setBounds(30, 130, 280, 30);
 
         campo_qtdestoque.setBorder(null);
         campo_qtdestoque.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +143,11 @@ public class Cadastrar_produto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(campo_qtdestoque);
-        campo_qtdestoque.setBounds(30, 190, 280, 20);
+        campo_qtdestoque.setBounds(30, 190, 280, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar produto_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar produto.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 650, 350);
+        jLabel1.setBounds(0, 0, 650, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,8 +170,22 @@ public class Cadastrar_produto extends javax.swing.JFrame {
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
-        // TODO add your handling code here:
+        Produto cadastrar_produto = new Produto();
+        String retorno = cadastrar_produto.create(campo_nomeproduto.getText(), Float.parseFloat(campo_precovenda.getText()), Float.parseFloat(campo_precocompra.getText()), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
+        JOptionPane.showMessageDialog(null, retorno);        // TODO add your handling code here:
     }//GEN-LAST:event_botao_salvarMouseClicked
+
+    private void tabela_categoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_categoriaMouseClicked
+        int k = tabela_categoria.getSelectedRow();
+            long ID = (long) tabela_categoria.getValueAt(k, 0);
+            CategoriaDAO categoria = new CategoriaDAO();
+        
+            categoria.getList().forEach((c) -> {
+                if(c.getIdCat() == ID){
+                    this.categoria = c;
+                }
+        });
+    }//GEN-LAST:event_tabela_categoriaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -159,5 +230,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
     private javax.swing.JTextField campo_qtdestoque;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela_categoria;
     // End of variables declaration//GEN-END:variables
 }

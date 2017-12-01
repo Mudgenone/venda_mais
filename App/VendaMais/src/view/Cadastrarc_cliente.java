@@ -6,6 +6,7 @@
 package view;
 
 import controler.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -111,7 +112,8 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         Cliente cadastrar_cliente = new Cliente();
-        cadastrar_cliente.cadastrar(campo_nomenovocliente.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText());    // TODO add your handling code here:
+        String retorno = cadastrar_cliente.create(campo_nomenovocliente.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText(), campo_observacao.getText());
+        JOptionPane.showMessageDialog(null, retorno);
     }//GEN-LAST:event_botao_salvarMouseClicked
 
     /**

@@ -21,6 +21,7 @@ import javax.swing.table.TableRowSorter;
 public class Editar_produto extends javax.swing.JFrame {
     Categoria categoria;
     Produto produto;
+    long id;
 
     /** Creates new form Editar_produto */
     public Editar_produto() {
@@ -199,8 +200,9 @@ public class Editar_produto extends javax.swing.JFrame {
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         Produto produto = new Produto();
+        String retorno = produto.update(this.id, campo_nome.getText(), Float.parseFloat(campo_precovenda.getText()), Float.parseFloat(campo_precocompra.getText()), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
+        JOptionPane.showMessageDialog(null, retorno);
         
-
         readJTable2();
 
         campo_nome.setText("");
@@ -233,6 +235,7 @@ public class Editar_produto extends javax.swing.JFrame {
         });
         
         if(tabela_produtos.getSelectedRow() != -1){
+            this.id = Long.parseLong(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 0).toString());
             campo_nome.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 1).toString());
             campo_precocompra.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 3).toString());
             campo_precovenda.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 4).toString());
@@ -266,6 +269,7 @@ public class Editar_produto extends javax.swing.JFrame {
         });
         
         if(tabela_produtos.getSelectedRow() != -1){
+            this.id = Long.parseLong(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 0).toString());
             campo_nome.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 1).toString());
             campo_precocompra.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 3).toString());
             campo_precovenda.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 4).toString());
