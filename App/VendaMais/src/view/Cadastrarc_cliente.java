@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 public class Cadastrarc_cliente extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form Cadastrarc_cliente
      */
     public Cadastrarc_cliente() {

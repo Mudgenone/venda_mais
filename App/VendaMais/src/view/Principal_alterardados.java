@@ -12,6 +12,10 @@ package view;
 public class Principal_alterardados extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form Principal_alterardados
      */
     public Principal_alterardados() {
