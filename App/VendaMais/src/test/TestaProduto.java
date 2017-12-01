@@ -23,6 +23,19 @@ public class TestaProduto {
 		produto.setCategoria(categoria);
 		dao.save(produto);
 		*/
+		//Retorna um produto pelo id
+		/*Produto produto = new Produto();
+		
+		produto = dao.getProdutoById(1);
+		
+		System.out.println("IdProd: " + produto.getIdProd());
+		System.out.println("Nome: " + produto.getNome());
+		System.out.println("Preco Venda: " + produto.getPrecoVenda());
+		System.out.println("Preco Compra: " + produto.getPrecoCompra());
+		System.out.println("Estoque: " + produto.getQtdEstoque());
+		System.out.println("IdCat: " + produto.getCategoria().getIdCat());
+		System.out.println("Nome Cat: " + produto.getCategoria().getNome());
+		*/
 		
 		// Mostra busca tudo da tabela Produto
 		/*ArrayList<Produto> produtos = dao.getList();

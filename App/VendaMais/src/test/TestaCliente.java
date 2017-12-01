@@ -22,6 +22,20 @@ public class TestaCliente {
 		dao.save(cliente);
 		*/
 		
+		//Retorna um cliente pelo id
+		/*
+		Cliente cliente = new Cliente();
+		
+		cliente = dao.getClienteById(2);
+		
+		System.out.println("Id: " + cliente.getId());
+		System.out.println("Nome: " + cliente.getNome());
+		System.out.println("Email: " + cliente.getEmail());
+		System.out.println("Endereço: " + cliente.getEndereco());
+		System.out.println("Telefone: " + cliente.getTelefone());
+		System.out.println("Obs: " + cliente.getObs());
+		*/
+		
 		// Mostra tudo da tabela Cliente
 		/*ArrayList<Cliente> clientes = dao.getList();
 		

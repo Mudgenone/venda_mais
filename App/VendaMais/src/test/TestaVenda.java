@@ -1,11 +1,13 @@
 package test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import controler.Cliente;
 import controler.Produto;
 import controler.Venda;
 import dao.VendaDAO;
+import dao.VendaProd;
 
 public class TestaVenda {
 	public static void main(String[] args) throws SQLException {
@@ -32,6 +34,46 @@ public class TestaVenda {
 		venda.setProduto(produto);
 		
 		dao.save(venda);
+		*/
+		
+		//Retorna Produtos Vendidos
+		/*
+		VendaProd vendido = new VendaProd(); 
+		
+		ArrayList <Produto> produtos = new ArrayList<Produto>();
+		
+		produtos = vendido.getProdutosVenda(4);
+		
+		for (Produto produto : produtos) {
+			System.out.println("--------------------");			
+			System.out.println("IdProd: " + produto.getIdProd());
+			System.out.println("Nome: " + produto.getNome());
+			System.out.println("Preco Venda: " + produto.getPrecoVenda());
+			System.out.println("Preco Compra: " + produto.getPrecoCompra());
+			System.out.println("Estoque: " + produto.getQtdEstoque());
+			System.out.println("IdCat: " + produto.getCategoria().getIdCat());
+			System.out.println("Nome Cat: " + produto.getCategoria().getNome());
+		}
+		*/
+		//Lista todas as vendas
+		/*
+		ArrayList<Venda> vendas = new ArrayList<Venda>();
+		
+		vendas = dao.getList();
+		
+		for (Venda venda: vendas) {
+			System.out.println("------Venda------");
+			System.out.println(venda.getIdVenda());
+			System.out.println(venda.getParcelas());
+			System.out.println(venda.getPrecoTotal());
+			System.out.println(venda.getDataVenda());
+			System.out.println("--------Cliente-------");
+			System.out.println(venda.getCliente().getNome());
+			System.out.println("------Produto------");
+			for (Produto produto: venda.getProduto()) {
+				System.out.println(produto.getNome());
+			}
+		}
 		*/
 	}
 }
