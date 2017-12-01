@@ -63,6 +63,33 @@ public class ClienteDAO {
 		}
 	}
 	
+	public Cliente getClienteById(long idCliente) {
+		String sql = "select * from cliente where idcliente=?";
+		
+		try (Connection con = new Conexao().getConnection()) {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			
+			stmt.setLong(1, idCliente);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			Cliente cliente = new Cliente();
+			
+			if(rs.next()) {			
+				cliente.setId(rs.getLong("idcliente"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setTelefone(rs.getString("telefone"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setObs(rs.getString("obs"));
+			}
+			rs.close();
+			stmt.close();
+			return cliente;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	public void update(Cliente cliente) {
 		String sql = "update cliente set nome=?, email=?,"+
 				"endereco=?, telefone=?, obs=? where idcliente=?";
