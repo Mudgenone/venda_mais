@@ -30,12 +30,12 @@ public class Produto {
         this.precoCompra = precoCompra;
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
-        
+               
         ProdutoDAO produt = new ProdutoDAO();
         produt.save(this);
         return "Cadastro realizado com sucesso!!!";
     }
-    public String update(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque){
+    public String update(long id, String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque){
         if(nome.length()>40){
             return "Seu nome tem mais de 80 carecteres, por favor digite um nome menor!";
         }
@@ -54,6 +54,7 @@ public class Produto {
         this.precoCompra = precoCompra;
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
+        this.idProd = id;
         
         ProdutoDAO produt = new ProdutoDAO();
         produt.update(this);
