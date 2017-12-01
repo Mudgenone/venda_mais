@@ -9,20 +9,15 @@ import java.util.ArrayList;
 import controler.Categoria;
 
 public class CategoriaDAO {
-	private Connection con;
-	
-	public CategoriaDAO(){
-		this.con = new Conexao().getConnection();
-	}
-	
+
 	public void save(Categoria categoria) {
 		String sql = "insert into categoria" +
 				" (nome)" +
 				" values (?)";
 		
-		try {
+		try (Connection con = new Conexao().getConnection()){
 			// cria um preparedStatement
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			// preenche os valores
 			stmt.setString(1, categoria.getNome());
@@ -37,10 +32,10 @@ public class CategoriaDAO {
 	}
 	
 	public ArrayList<Categoria> getList() {
-		try {
+		try (Connection con = new Conexao().getConnection()) {
 			ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 
-			PreparedStatement stmt = this.con.prepareStatement("SELECT * FROM categoria");
+			PreparedStatement stmt = con.prepareStatement("SELECT * FROM categoria");
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
@@ -62,8 +57,8 @@ public class CategoriaDAO {
 	
 	public void update(Categoria produto) {
 		String sql = "update categoria set nome=? where idcat=?";
-		try {
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+		try (Connection con = new Conexao().getConnection()) {
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, produto.getNome());
 			stmt.setLong(2, produto.getIdCat());
@@ -77,8 +72,8 @@ public class CategoriaDAO {
 	}
 	
 	public void remove(Categoria produto) {
-		try {
-			PreparedStatement stmt = this.con.prepareStatement("delete from categoria where idcat=?");
+		try (Connection con = new Conexao().getConnection()) {
+			PreparedStatement stmt = con.prepareStatement("delete from categoria where idcat=?");
 
 			stmt.setLong(1, produto.getIdCat());
 			

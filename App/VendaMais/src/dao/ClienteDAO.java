@@ -9,20 +9,15 @@ import java.util.ArrayList;
 import controler.Cliente;
 
 public class ClienteDAO {
-	private Connection con;
-	
-	public ClienteDAO (){
-		this.con = new Conexao().getConnection();
-	}
 	
 	public void save(Cliente cliente) {
 		String sql = "insert into cliente" +
 				" (nome,endereco,email,telefone,obs)" +
 				" values (?,?,?,?,?)";
 		
-		try {
+		try (Connection con = new Conexao().getConnection()){
 			// cria um preparedStatement
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			// preenche os valores
 			stmt.setString(1, cliente.getNome());
@@ -41,10 +36,10 @@ public class ClienteDAO {
 	}
 	
 	public ArrayList<Cliente> getList() {
-		try {
+		try (Connection con = new Conexao().getConnection()) {
 			ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
-			PreparedStatement stmt = this.con.prepareStatement("select * from cliente");
+			PreparedStatement stmt = con.prepareStatement("select * from cliente");
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
@@ -71,8 +66,8 @@ public class ClienteDAO {
 	public void update(Cliente cliente) {
 		String sql = "update cliente set nome=?, email=?,"+
 				"endereco=?, telefone=?, obs=? where idcliente=?";
-		try {
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+		try (Connection con = new Conexao().getConnection()){
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getEmail());
@@ -90,8 +85,8 @@ public class ClienteDAO {
 	}
 	
 	public void remove(Cliente cliente) {
-		try {
-			PreparedStatement stmt = this.con.prepareStatement("delete from cliente where idcliente=?");
+		try (Connection con = new Conexao().getConnection()) {
+			PreparedStatement stmt = con.prepareStatement("delete from cliente where idcliente=?");
 
 			stmt.setLong(1, cliente.getId());
 			stmt.execute();

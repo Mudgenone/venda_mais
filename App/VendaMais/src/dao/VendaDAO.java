@@ -13,20 +13,15 @@ import controler.Produto;
 import controler.Venda;
 
 public class VendaDAO {
-	private Connection con;
-	
-	public VendaDAO (){
-		this.con = new Conexao().getConnection();
-	}
 	
 	public void save(Venda venda) {
 		String sql = "insert into venda" +
 				" (idcliente,parcela,datavenda,pago,precotot)" +
 				" values (?,?,?,?,?) returning idvenda;";
 		
-		try {
+		try (Connection con = new Conexao().getConnection()) {
 			// cria um preparedStatement
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			// preenche os valores
 			stmt.setLong(1, venda.getCliente().getId());
@@ -48,6 +43,6 @@ public class VendaDAO {
 			System.out.println("Salvo!");
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
-		} 
+		}
 	}
 }

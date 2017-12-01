@@ -10,20 +10,15 @@ import controler.Categoria;
 import controler.Produto;
 
 public class ProdutoDAO {
-private Connection con;
-	
-	public ProdutoDAO(){
-		this.con = new Conexao().getConnection();
-	}
 	
 	public void save(Produto produto) {
 		String sql = "insert into produto" +
-				" (nome,qntestoque,precocompra,precovenda,idcat)" +
+				" (nomeProd,qntestoque,precocompra,precovenda,idcat)" +
 				" values (?,?,?,?,?)";
 		
-		try {
+		try (Connection con = new Conexao().getConnection()) {
 			// cria um preparedStatement
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			// preenche os valores
 			stmt.setString(1, produto.getNome());
@@ -42,10 +37,10 @@ private Connection con;
 	}
 	
 	public ArrayList<Produto> getList() {
-		try {
+		try (Connection con = new Conexao().getConnection()) {
 			ArrayList<Produto> produtos = new ArrayList<Produto>();
 
-			PreparedStatement stmt = this.con.prepareStatement("SELECT p.*, c.nome as nomecat FROM produto as p,categoria as c where p.idCat = c.idCat");
+			PreparedStatement stmt = con.prepareStatement("SELECT p.*, c.nome as nomecat FROM produto as p,categoria as c where p.idCat = c.idCat");
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
@@ -76,8 +71,8 @@ private Connection con;
 	public void update(Produto produto) {
 		String sql = "update produto set nome=?, qntestoque=?,"+
 				"precocompra=?, precovenda=?, idcat=? where idprod=?";
-		try {
-			PreparedStatement stmt = this.con.prepareStatement(sql);
+		try (Connection con = new Conexao().getConnection()){
+			PreparedStatement stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, produto.getNome());
 			stmt.setInt(2, produto.getQtdEstoque());
@@ -95,8 +90,8 @@ private Connection con;
 	}
 	
 	public void remove(Produto produto) {
-		try {
-			PreparedStatement stmt = this.con.prepareStatement("delete from produto where idprod=?");
+		try (Connection con = new Conexao().getConnection()) {
+			PreparedStatement stmt = con.prepareStatement("delete from produto where idprod=?");
 
 			stmt.setLong(1, produto.getIdProd());
 			stmt.execute();
