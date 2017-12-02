@@ -12,12 +12,21 @@ public class Venda {
     private ArrayList <Produto> produto;
     private Date dataVenda; 
 
-    public void cadVenda(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produto) {
+    public String create(Cliente cliente, int parcelas, ArrayList <Produto> produtos) {
+        if(parcelas<1){
+            return "Não pode haver menos de 01 parcela";
+        }
+        double soma = 0;
+        for(Produto produto : produtos){
+            soma += produto.getQntVendida()*produto.getPrecoVenda();
+        }
+        
+        
         this.cliente = cliente;
         this.parcelas = parcelas;
         this.pago = false;
-        this.precoTotal = precoTotal;
-        this.produto = produto;
+        this.precoTotal = soma;
+        this.produto = produtos;
     }
    
     public Cliente getCliente() {
