@@ -69,9 +69,14 @@ public class TestaVenda {
 			System.out.println(venda.getDataVenda());
 			System.out.println("--------Cliente-------");
 			System.out.println(venda.getCliente().getNome());
+			System.out.println(venda.getCliente().getEmail());
+			System.out.println(venda.getCliente().getTelefone());
+			System.out.println(venda.getCliente().getEndereco());
+			System.out.println(venda.getCliente().getObs());
 			System.out.println("------Produto------");
 			for (Produto produto: venda.getProduto()) {
 				System.out.println(produto.getNome());
+				System.out.println(produto.getCategoria().getNome());
 			}
 		}
 		*/
