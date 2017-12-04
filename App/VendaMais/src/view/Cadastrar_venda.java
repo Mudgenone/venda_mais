@@ -6,6 +6,9 @@
 package view;
 
 import controler.Venda;
+import dao.ClienteDAO;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +22,28 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     public Cadastrar_venda() {
         initComponents();
         setSize(668, 402);
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        tabela_cliente.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+    }
+    
+    public void readJTable() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
+        modelo.setNumRows(0);
+        ClienteDAO cliente = new ClienteDAO();
+
+        cliente.getList().forEach((c) -> {
+            modelo.addRow(new Object[]{
+                c.getNome(),
+                c.getTelefone(),
+                c.getEndereco(),
+                c.getEmail(),
+                c.getObs()
+            });
+        });
+
     }
 
     /**
@@ -31,65 +56,43 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        nao = new javax.swing.JRadioButton();
-        sim = new javax.swing.JRadioButton();
-        campo_data = new javax.swing.JTextField();
-        campo_precototal = new javax.swing.JTextField();
-        campo_parcelas = new javax.swing.JTextField();
-        campo_qtdproduto = new javax.swing.JTextField();
-        botao_salvar = new javax.swing.JLabel();
+        continuar = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_cliente = new javax.swing.JTable();
         icon_voltar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        nao.setText("Não");
-        getContentPane().add(nao);
-        nao.setBounds(180, 300, 50, 23);
-
-        sim.setText("Sim");
-        sim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sim);
-        sim.setBounds(130, 300, 50, 23);
-
-        campo_data.setBorder(null);
-        getContentPane().add(campo_data);
-        campo_data.setBounds(130, 230, 100, 30);
-
-        campo_precototal.setBorder(null);
-        campo_precototal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_precototalActionPerformed(evt);
-            }
-        });
-        getContentPane().add(campo_precototal);
-        campo_precototal.setBounds(20, 300, 70, 30);
-
-        campo_parcelas.setBorder(null);
-        getContentPane().add(campo_parcelas);
-        campo_parcelas.setBounds(20, 230, 70, 30);
-
-        campo_qtdproduto.setBorder(null);
-        campo_qtdproduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_qtdprodutoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(campo_qtdproduto);
-        campo_qtdproduto.setBounds(340, 230, 90, 30);
-
-        botao_salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+        continuar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botao_salvarMouseClicked(evt);
+                continuarMouseClicked(evt);
             }
         });
-        getContentPane().add(botao_salvar);
-        botao_salvar.setBounds(380, 290, 190, 60);
+        getContentPane().add(continuar);
+        continuar.setBounds(390, 300, 240, 50);
+
+        tabela_cliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Telefone", "Endereco", "Email", "Observacao"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela_cliente);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 120, 570, 170);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,9 +102,9 @@ public class Cadastrar_venda extends javax.swing.JFrame {
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(20, 30, 50, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 660, 360);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda – 1.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 650, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,21 +114,10 @@ public class Cadastrar_venda extends javax.swing.JFrame {
         tela.setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_icon_voltarMouseClicked
 
-    private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_salvarMouseClicked
-
-    private void campo_qtdprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_qtdprodutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_qtdprodutoActionPerformed
-
-    private void campo_precototalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_precototalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_precototalActionPerformed
-
-    private void simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_simActionPerformed
+    private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
+        Cadastrar_venda_carrinho tela = new Cadastrar_venda_carrinho();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_continuarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -163,15 +155,11 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel botao_salvar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField campo_data;
-    private javax.swing.JTextField campo_parcelas;
-    private javax.swing.JTextField campo_precototal;
-    private javax.swing.JTextField campo_qtdproduto;
+    private javax.swing.JLabel continuar;
     private javax.swing.JLabel icon_voltar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton nao;
-    private javax.swing.JRadioButton sim;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela_cliente;
     // End of variables declaration//GEN-END:variables
 }

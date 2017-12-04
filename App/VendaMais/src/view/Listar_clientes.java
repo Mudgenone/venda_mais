@@ -64,10 +64,7 @@ public class Listar_clientes extends javax.swing.JFrame {
 
         tabela_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Telefone", "Endereco", "Email", "Observacao"
