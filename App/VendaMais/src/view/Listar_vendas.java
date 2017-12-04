@@ -83,7 +83,7 @@ public class Listar_vendas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto"
+                "Produtos"
             }
         ));
         jScrollPane2.setViewportView(tabela_vendaproduto);
@@ -112,6 +112,11 @@ public class Listar_vendas extends javax.swing.JFrame {
                 tabela_vendasMouseClicked(evt);
             }
         });
+        tabela_vendas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabela_vendasKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela_vendas);
 
         getContentPane().add(jScrollPane1);
@@ -138,6 +143,21 @@ public class Listar_vendas extends javax.swing.JFrame {
             
         readJTable2();// TODO add your handling code here:
     }//GEN-LAST:event_tabela_vendasMouseClicked
+
+    private void tabela_vendasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabela_vendasKeyReleased
+        int k = tabela_vendas.getSelectedRow();
+        long ID = (long) tabela_vendas.getValueAt(k, 0);
+        VendaDAO vendadao = new VendaDAO();    
+        //Venda venda = new Venda();
+        
+            vendadao.getList().forEach((c) -> {
+                if(c.getIdVenda()== ID){
+                    this.venda = c;
+                }
+        });
+            
+        readJTable2();        // TODO add your handling code here:
+    }//GEN-LAST:event_tabela_vendasKeyReleased
 
     /**
      * @param args the command line arguments

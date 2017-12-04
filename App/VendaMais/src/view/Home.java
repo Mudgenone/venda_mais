@@ -32,6 +32,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icon_relatoriovendas = new javax.swing.JLabel();
         icon_relatorioprodutos = new javax.swing.JLabel();
         icon_relatorioclientes = new javax.swing.JLabel();
         icon_receberpagamento = new javax.swing.JLabel();
@@ -44,6 +45,14 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        icon_relatoriovendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icon_relatoriovendasMouseClicked(evt);
+            }
+        });
+        getContentPane().add(icon_relatoriovendas);
+        icon_relatoriovendas.setBounds(30, 270, 80, 70);
 
         icon_relatorioprodutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,6 +165,11 @@ public class Home extends javax.swing.JFrame {
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_icon_relatorioprodutosMouseClicked
 
+    private void icon_relatoriovendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_relatoriovendasMouseClicked
+        Listar_vendas tela = new Listar_vendas();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_icon_relatoriovendasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -200,6 +214,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel icon_receberpagamento;
     private javax.swing.JLabel icon_relatorioclientes;
     private javax.swing.JLabel icon_relatorioprodutos;
+    private javax.swing.JLabel icon_relatoriovendas;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
