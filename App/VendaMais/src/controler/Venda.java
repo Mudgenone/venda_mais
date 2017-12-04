@@ -9,7 +9,7 @@ public class Venda {
     private int parcelas;
     private boolean pago;
     private double precoTotal;
-    private ArrayList <Produto> produto;
+    public ArrayList <Produto> produto;
     private Date dataVenda; 
 
     public void cadVenda(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produto) {
