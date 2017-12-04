@@ -3,6 +3,8 @@ package controler;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import dao.VendaDAO;
+
 public class Venda {
 	private long idVenda;
     private Cliente cliente;
@@ -11,22 +13,35 @@ public class Venda {
     private double precoTotal;
     private ArrayList <Produto> produto;
     private Date dataVenda; 
+    
+    private VendaDAO dao = new VendaDAO();
 
-    public String create(Cliente cliente, int parcelas, ArrayList <Produto> produtos) {
+    public String create(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produtos, Date dataVenda) {
         if(parcelas<1){
             return "Não pode haver menos de 01 parcela";
         }
-        double soma = 0;
-        for(Produto produto : produtos){
-            soma += produto.getQntVendida()*produto.getPrecoVenda();
+        
+        if(precoTotal<0) {
+        	return "Preço total não pode ser menor que 0";
         }
-        
-        
+                      
         this.cliente = cliente;
+        this.dataVenda = dataVenda;
         this.parcelas = parcelas;
         this.pago = false;
-        this.precoTotal = soma;
+        this.precoTotal = precoTotal;
         this.produto = produtos;
+        
+        dao.save(this);
+        return "Venda feita com sucesso!";
+    }
+    public boolean remove(Venda venda){
+    	try {
+    		dao.remove(venda);
+    		return true;
+    	} catch(RuntimeException err) {
+    		return false;
+    	}        
     }
    
     public Cliente getCliente() {
