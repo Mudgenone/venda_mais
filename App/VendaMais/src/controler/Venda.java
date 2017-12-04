@@ -11,7 +11,7 @@ public class Venda {
     private int parcelas;
     private boolean pago;
     private double precoTotal;
-    private ArrayList <Produto> produto;
+    public ArrayList <Produto> produto;
     private Date dataVenda; 
     
     private VendaDAO dao = new VendaDAO();
