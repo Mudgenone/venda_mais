@@ -39,7 +39,7 @@ public class VendaProd {
 		try(Connection con = new Conexao().getConnection()){
 			ArrayList<Produto> produtos = new ArrayList<Produto>();
 			
-			String sql = "select p.idprod from produto as p, venda_produto as vp where vp.idvenda=? and p.idprod=vp.idprod";
+			String sql = "select p.*,c.nome as nomecat from produto as p,categoria as c, venda_produto as vp where vp.idvenda=? and p.idprod=vp.idprod and p.idCat = c.idCat";
 		
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setLong(1, idVenda);
@@ -47,9 +47,20 @@ public class VendaProd {
 			ResultSet rs = stmt.executeQuery();
 		
 			while(rs.next()) {
-				ProdutoDAO produto = new ProdutoDAO();
 				// adicionando o objeto à lista
-				produtos.add(produto.getProdutoById(rs.getLong("idprod")));
+				Produto produto = new Produto();
+				produto.setIdProd(rs.getLong("idprod"));
+				produto.setNome(rs.getString("nomeprod"));
+				produto.setPrecoCompra(rs.getFloat("precocompra"));
+				produto.setPrecoVenda(rs.getFloat("precovenda"));
+				produto.setQtdEstoque(rs.getInt("qntestoque"));
+			
+				Categoria categoria = new Categoria();
+				categoria.setIdCat(rs.getLong("idcat"));
+				categoria.setNome(rs.getString("nomecat"));
+				produto.setCategoria(categoria);
+				
+				produtos.add(produto);
 			}
 			rs.close();
 			stmt.close();

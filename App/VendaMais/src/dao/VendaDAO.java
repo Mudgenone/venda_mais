@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import controler.Categoria;
 import controler.Cliente;
 import controler.Produto;
 import controler.Venda;
@@ -51,7 +50,7 @@ public class VendaDAO {
 		try (Connection con = new Conexao().getConnection()) {
 			ArrayList<Venda> vendas = new ArrayList<Venda>();
 
-			PreparedStatement stmt = con.prepareStatement("select * from venda");
+			PreparedStatement stmt = con.prepareStatement("select v.*,c.* from venda as v, cliente as c where c.idCliente = v.idCliente");
 			ResultSet rs = stmt.executeQuery();
 	
 			while (rs.next()) {
@@ -63,8 +62,15 @@ public class VendaDAO {
 				venda.setPrecoTotal(rs.getFloat("precotot"));
 				venda.setDataVenda(rs.getDate("datavenda"));
 				
-				ClienteDAO cliente = new ClienteDAO(); 
-				venda.setCliente(cliente.getClienteById(rs.getLong("idcliente")));
+				Cliente cliente = new Cliente(); 
+				cliente.setId(rs.getLong("idcliente"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setTelefone(rs.getString("telefone"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setObs(rs.getString("obs"));
+				
+				venda.setCliente(cliente);
 				
 				VendaProd produtos_vendidos = new VendaProd();
 				venda.setProduto(produtos_vendidos.getProdutosVenda(venda.getIdVenda()));
