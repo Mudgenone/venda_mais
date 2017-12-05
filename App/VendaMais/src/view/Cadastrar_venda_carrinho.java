@@ -20,21 +20,25 @@ import javax.swing.JOptionPane;
  * @author ander
  */
 public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
-    Venda venda = new Venda();
-    ArrayList<Produto> produtos = new ArrayList<Produto>();
+    Cliente cliente = new Cliente();
+    ArrayList<Produto> produtos = new ArrayList<>();
     Produto produto= new Produto();
     double total=0;
     /**
      * Creates new form Cadastrar_venda_carrinho
      */
-    public Cadastrar_venda_carrinho(Venda venda) {
+    public Cadastrar_venda_carrinho(Cliente cliente) {
         initComponents();
         setSize(668, 402);
         
         DefaultTableModel modelo = (DefaultTableModel) tabela_produtos.getModel();
         tabela_produtos.setRowSorter(new TableRowSorter(modelo));
-        this.venda = venda;      
+        this.cliente = cliente;      
         this.data.setText(LocalDate.now().toString());
+        //tabela_produtos.getColumnModel().getColumn(0).setMinWidth(0); 
+        //tabela_produtos.getColumnModel().getColumn(0).setMaxWidth(0);
+       // tabela_carrinho.getColumnModel().getColumn(0).setMinWidth(0); 
+       // tabela_carrinho.getColumnModel().getColumn(0).setMaxWidth(0);
         readJTable();
     }
 
@@ -46,26 +50,36 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) tabela_produtos.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO produto = new ProdutoDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
 
-        produto.getList().forEach((c) -> {
+        produtoDAO.getList().forEach((c) -> {
             modelo.addRow(new Object[]{
                 c.getIdProd(),
-                c.getNome()
+                c.getNome(),
+                c.getPrecoVenda()
             });
         });
     }
     public void readJTable2() {
         
         DefaultTableModel modelo = (DefaultTableModel) tabela_carrinho.getModel();
-        ProdutoDAO produto = new ProdutoDAO();
-
+        
         modelo.addRow(new Object[]{
-                this.produto.getNome(),
+            this.produto.getIdProd(),
+            this.produto.getNome(),
             this.produto.getQntVendida()
-        });
-        this.total += this.produto.getQntVendida()*this.produto.getPrecoVenda(); 
-        preco_total.setText(String.valueOf(this.total));
+        });        
+    }
+    
+    public Boolean inTable (String id){
+        int linha = tabela_carrinho.getRowCount();
+       
+        for(int i =0; i<linha; i++){
+            if(String.valueOf(tabela_carrinho.getValueAt(i, 0)).equals(id)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -83,13 +97,17 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         tabela_produtos = new javax.swing.JTable();
         botao_addcarrinho = new javax.swing.JLabel();
         icon_voltar = new javax.swing.JLabel();
-        campo_qtd = new javax.swing.JTextField();
-        campo_parcelas = new javax.swing.JTextField();
-        nada = new javax.swing.JLabel();
+        quantidade = new javax.swing.JSpinner();
         data = new javax.swing.JLabel();
         preco_total = new javax.swing.JLabel();
+        parcelas = new javax.swing.JSpinner();
+        finalizar = new javax.swing.JLabel();
+        nada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro da Venda");
+        setLocationByPlatform(true);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         tabela_carrinho.setModel(new javax.swing.table.DefaultTableModel(
@@ -97,30 +115,52 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Qtd."
+                "id", "Produto", "Qtd."
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Long.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela_carrinho.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabela_carrinho);
+        if (tabela_carrinho.getColumnModel().getColumnCount() > 0) {
+            tabela_carrinho.getColumnModel().getColumn(0).setResizable(false);
+            tabela_carrinho.getColumnModel().getColumn(1).setResizable(false);
+            tabela_carrinho.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(470, 120, 160, 150);
+        jScrollPane1.setBounds(430, 120, 200, 150);
 
         tabela_produtos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "Produto"
+                "id", "Produto", "Preço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tabela_produtos.getTableHeader().setReorderingAllowed(false);
         tabela_produtos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabela_produtosMouseClicked(evt);
@@ -129,6 +169,9 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabela_produtos);
         if (tabela_produtos.getColumnModel().getColumnCount() > 0) {
             tabela_produtos.getColumnModel().getColumn(0).setResizable(false);
+            tabela_produtos.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tabela_produtos.getColumnModel().getColumn(1).setResizable(false);
+            tabela_produtos.getColumnModel().getColumn(2).setResizable(false);
         }
 
         getContentPane().add(jScrollPane2);
@@ -151,22 +194,32 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         getContentPane().add(icon_voltar);
         icon_voltar.setBounds(10, 30, 60, 50);
 
-        campo_qtd.setBorder(null);
-        getContentPane().add(campo_qtd);
-        campo_qtd.setBounds(270, 120, 110, 30);
+        quantidade.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        quantidade.setValue(1);
+        getContentPane().add(quantidade);
+        quantidade.setBounds(270, 120, 110, 30);
+        getContentPane().add(data);
+        data.setBounds(210, 320, 90, 30);
 
-        campo_parcelas.setBorder(null);
-        getContentPane().add(campo_parcelas);
-        campo_parcelas.setBounds(100, 320, 60, 30);
+        preco_total.setFont(new java.awt.Font("Bitstream Vera Serif", 1, 12)); // NOI18N
+        getContentPane().add(preco_total);
+        preco_total.setBounds(130, 290, 70, 20);
+
+        parcelas.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        getContentPane().add(parcelas);
+        parcelas.setBounds(100, 320, 60, 30);
+
+        finalizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                finalizarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(finalizar);
+        finalizar.setBounds(400, 290, 240, 70);
 
         nada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda – 3.png"))); // NOI18N
-        nada.setText("hjgj");
         getContentPane().add(nada);
         nada.setBounds(0, 0, 650, 370);
-        getContentPane().add(data);
-        data.setBounds(220, 325, 90, 20);
-        getContentPane().add(preco_total);
-        preco_total.setBounds(130, 290, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,12 +231,29 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
 
     private void botao_addcarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_addcarrinhoMouseClicked
         // TODO add your handling code here:
-        String pegou = campo_qtd.getText();
+        String pegou = quantidade.getValue().toString();
+        
         System.out.println(pegou);
-        if(this.produto != null && pegou != ""){
+        if(tabela_produtos.getSelectedRow() != -1){
             this.produto.setQntVendida(Integer.parseInt(pegou));
-            this.produtos.add(this.produto);
-            readJTable2();
+            if(this.produto.getQtdEstoque() >= this.produto.getQntVendida()){
+                if(!inTable(String.valueOf(this.produto.getIdProd()))){
+                    this.produto.setQtdEstoque(this.produto.getQtdEstoque()-this.produto.getQntVendida());
+                    System.out.println(this.produto.getQtdEstoque());
+                    this.produtos.add(this.produto);
+                    this.total += this.produto.getQntVendida()*this.produto.getPrecoVenda(); 
+                    preco_total.setText(String.valueOf(this.total));
+                    readJTable2();
+                }else {
+                    JOptionPane.showMessageDialog(null, "Produto já foi adicionado!");
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Estoque insuficiente!");
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha um produto!");
         }
     }//GEN-LAST:event_botao_addcarrinhoMouseClicked
 
@@ -196,6 +266,18 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
             this.produto = produto.getProdutoById(ID);
             System.out.println(this.produto.getNome());
     }//GEN-LAST:event_tabela_produtosMouseClicked
+
+    private void finalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizarMouseClicked
+        // TODO add your handling code here:
+        if(tabela_carrinho.getRowCount() != 0){
+            Venda venda = new Venda();
+            String mostra = venda.create(this.cliente,Integer.parseInt(parcelas.getValue().toString()) , this.total, this.produtos);
+            JOptionPane.showMessageDialog(null, mostra);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Nada para cadastrar!");
+        }
+    }//GEN-LAST:event_finalizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,14 +316,15 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botao_addcarrinho;
-    private javax.swing.JTextField campo_parcelas;
-    private javax.swing.JTextField campo_qtd;
     private javax.swing.JLabel data;
+    private javax.swing.JLabel finalizar;
     private javax.swing.JLabel icon_voltar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nada;
+    private javax.swing.JSpinner parcelas;
     private javax.swing.JLabel preco_total;
+    private javax.swing.JSpinner quantidade;
     private javax.swing.JTable tabela_carrinho;
     private javax.swing.JTable tabela_produtos;
     // End of variables declaration//GEN-END:variables

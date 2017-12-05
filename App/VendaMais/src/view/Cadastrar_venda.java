@@ -6,21 +6,21 @@
 package view;
 
 import controler.Cliente;
-import controler.Venda;
 import dao.ClienteDAO;
-import dao.ProdutoDAO;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Cadastrar_venda extends javax.swing.JFrame {
-    Venda venda = new Venda();
+    Cliente cliente = new Cliente();
     
     public Cadastrar_venda() {
         initComponents();
         setSize(668, 402);
         DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
         tabela_cliente.setRowSorter(new TableRowSorter(modelo));
-        
+        tabela_cliente.getColumnModel().getColumn(0).setMinWidth(0); 
+        tabela_cliente.getColumnModel().getColumn(0).setMaxWidth(0);
         readJTable();
     }
     
@@ -121,9 +121,12 @@ public class Cadastrar_venda extends javax.swing.JFrame {
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
-        if(this.venda!= null){
-            Cadastrar_venda_carrinho tela = new Cadastrar_venda_carrinho(this.venda);
-            tela.setVisible(true);   
+        if(tabela_cliente.getSelectedRow() != -1){
+            Cadastrar_venda_carrinho tela = new Cadastrar_venda_carrinho(this.cliente);
+            tela.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente!");
         }
             // TODO add your handling code here:
     }//GEN-LAST:event_continuarMouseClicked
@@ -133,15 +136,14 @@ public class Cadastrar_venda extends javax.swing.JFrame {
          int k = tabela_cliente.getSelectedRow();
          long ID = (long) tabela_cliente.getValueAt(k, 0);
          ClienteDAO cliente = new ClienteDAO();
-         this.venda.setCliente(cliente.getClienteById(ID));
-        
+         this.cliente=cliente.getClienteById(ID);
     }//GEN-LAST:event_tabela_clienteKeyReleased
 
     private void tabela_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_clienteMouseClicked
         int k = tabela_cliente.getSelectedRow();
         long ID = (long) tabela_cliente.getValueAt(k, 0);
         ClienteDAO cliente = new ClienteDAO();
-        this.venda.setCliente(cliente.getClienteById(ID));
+        this.cliente = cliente.getClienteById(ID);
         
     }//GEN-LAST:event_tabela_clienteMouseClicked
 
