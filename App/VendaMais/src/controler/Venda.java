@@ -34,6 +34,7 @@ public class Venda {
         dao.save(this);
         return "Venda feita com sucesso!";
     }
+    
     public boolean remove(Venda venda){
     	try {
     		dao.remove(venda);
