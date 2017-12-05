@@ -25,11 +25,14 @@ public class VendaProd {
 			stmt.setLong(1, produto.getIdProd());
 			stmt.setLong(2, venda.getIdVenda());
 			stmt.setInt(3, produto.getQntVendida());
-	        
-			// executa
-			stmt.execute();
+                        // executa
+		        stmt.execute();
+                        
+                        ProdutoDAO prod = new ProdutoDAO();
+                        
+                        prod.update(produto);
 			stmt.close();
-			System.out.println("Venda_Prod foi Salva!");
+			
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		} 
