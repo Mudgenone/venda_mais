@@ -16,7 +16,7 @@ public class Venda {
     
     private VendaDAO dao = new VendaDAO();
 
-    public String create(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produtos, Date dataVenda) {
+    public String create(Cliente cliente, int parcelas, double precoTotal, ArrayList <Produto> produtos) {
         if(parcelas<1){
             return "Não pode haver menos de 01 parcela";
         }
@@ -26,7 +26,6 @@ public class Venda {
         }
                       
         this.cliente = cliente;
-        this.dataVenda = dataVenda;
         this.parcelas = parcelas;
         this.pago = false;
         this.precoTotal = precoTotal;
