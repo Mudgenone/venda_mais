@@ -14,6 +14,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button_sobre = new javax.swing.JLabel();
         icon_relatoriovendas = new javax.swing.JLabel();
         icon_relatorioprodutos = new javax.swing.JLabel();
         icon_relatorioclientes = new javax.swing.JLabel();
@@ -27,6 +28,14 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        button_sobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_sobreMouseClicked(evt);
+            }
+        });
+        getContentPane().add(button_sobre);
+        button_sobre.setBounds(470, 300, 90, 40);
 
         icon_relatoriovendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,7 +109,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(icon_cadastrarclientes);
         icon_cadastrarclientes.setBounds(30, 150, 80, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Home_1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Home.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 680, 370);
 
@@ -161,6 +170,12 @@ public class Home extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_icon_relatoriovendasMouseClicked
 
+    private void button_sobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_sobreMouseClicked
+        Sobre tela = new Sobre();
+        tela.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_button_sobreMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -194,6 +209,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel button_sobre;
     private javax.swing.JLabel icon_cadastrarcategoria;
     private javax.swing.JLabel icon_cadastrarclientes;
     private javax.swing.JLabel icon_cadastrarproduto;
