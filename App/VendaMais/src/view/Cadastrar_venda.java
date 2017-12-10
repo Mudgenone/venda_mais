@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controler.Cliente;
@@ -12,20 +7,22 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 public class Cadastrar_venda extends javax.swing.JFrame {
+
     Cliente cliente = new Cliente();
-    
+
     public Cadastrar_venda() {
         initComponents();
         setSize(668, 402);
         DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
         tabela_cliente.setRowSorter(new TableRowSorter(modelo));
-        tabela_cliente.getColumnModel().getColumn(0).setMinWidth(0); 
+        tabela_cliente.getColumnModel().getColumn(0).setMinWidth(0);
         tabela_cliente.getColumnModel().getColumn(0).setMaxWidth(0);
+        this.setLocationRelativeTo(null);
         readJTable();
     }
-    
+
     public void readJTable() {
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
         modelo.setNumRows(0);
         ClienteDAO cliente = new ClienteDAO();
@@ -117,26 +114,26 @@ public class Cadastrar_venda extends javax.swing.JFrame {
 
     private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
         Home tela = new Home();
-        tela.setVisible(true);         // TODO add your handling code here:
+        tela.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
-        if(tabela_cliente.getSelectedRow() != -1){
+        if (tabela_cliente.getSelectedRow() != -1) {
             Cadastrar_venda_carrinho tela = new Cadastrar_venda_carrinho(this.cliente);
             tela.setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente!");
         }
-            // TODO add your handling code here:
     }//GEN-LAST:event_continuarMouseClicked
 
     private void tabela_clienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabela_clienteKeyReleased
-     
-         int k = tabela_cliente.getSelectedRow();
-         long ID = (long) tabela_cliente.getValueAt(k, 0);
-         ClienteDAO cliente = new ClienteDAO();
-         this.cliente=cliente.getClienteById(ID);
+
+        int k = tabela_cliente.getSelectedRow();
+        long ID = (long) tabela_cliente.getValueAt(k, 0);
+        ClienteDAO cliente = new ClienteDAO();
+        this.cliente = cliente.getClienteById(ID);
     }//GEN-LAST:event_tabela_clienteKeyReleased
 
     private void tabela_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_clienteMouseClicked
@@ -144,7 +141,7 @@ public class Cadastrar_venda extends javax.swing.JFrame {
         long ID = (long) tabela_cliente.getValueAt(k, 0);
         ClienteDAO cliente = new ClienteDAO();
         this.cliente = cliente.getClienteById(ID);
-        
+
     }//GEN-LAST:event_tabela_clienteMouseClicked
 
     /**

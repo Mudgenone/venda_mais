@@ -3,7 +3,8 @@ package controler;
 import dao.ProdutoDAO;
 
 public class Produto {
-	private long idProd;
+
+    private long idProd;
     private String nome;
     private float precoVenda;
     private float precoCompra;
@@ -11,117 +12,116 @@ public class Produto {
     private int qtdEstoque;
     private int qntVendida;
 
-    public String create(String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque) {
-        if(nome.length()>40){
+    public String create(String nome, String precoVenda, String precoCompra, Categoria categoria, int qtdEstoque) {
+        if (nome.equals("") || nome.length() > 40) {
             return "Seu nome tem mais de 80 carecteres, por favor digite um nome menor!";
         }
-        if (precoCompra < 0){
-            return "Valor do preço de compra não pode ser menor que 0!";
+        if (!precoCompra.matches("^\\d+\\.?\\d+$")) {
+            return "Preço de Compra Inválido\nPor favor, digite novamente!\nEx: 19.20";
         }
-        if(precoVenda < 0){
-            return "Valor do preço de venda não pode ser menor que 0!";
+        if (!precoVenda.matches("^\\d+\\.?\\d+$")) {
+            return "Preço de Venda Inválido\nPor favor, digite novamente!\nEx: 19.20";
         }
-        if(qtdEstoque < 0){
-            return "Sua quantidade de estoque esta menor que 0, faça novas compras!";
+        if (qtdEstoque < 0) {
+            return "Quantidade no Estoque Inválida!\nPor favor, digite novamente!";
         }
-        
+
         this.nome = nome;
-        this.precoVenda = precoVenda;
-        this.precoCompra = precoCompra;
+        this.precoVenda = Float.parseFloat(precoVenda);
+        this.precoCompra = Float.parseFloat(precoCompra);
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
-               
+
         ProdutoDAO produt = new ProdutoDAO();
         produt.save(this);
         return "Cadastro realizado com sucesso!!!";
     }
-    public String update(long id, String nome, float precoVenda, float precoCompra, Categoria categoria, int qtdEstoque){
-        if(nome.length()>40){
-            return "Seu nome tem mais de 80 carecteres, por favor digite um nome menor!";
+
+    public String update(long id, String nome, String precoVenda, String precoCompra, Categoria categoria, int qtdEstoque) {
+        if (nome.equals("") || nome.length() > 40) {
+            return "Nome Inválido\nPor favor digite novamente!";
         }
-        if (precoCompra < 0){
-            return "Valor do preço de compra não pode ser menor que 0!";
+        if (!precoCompra.matches("^\\d+\\.?\\d+$")) {
+            return "Preço de Compra Inválido\nPor favor, digite novamente!\nEx: 19.20";
         }
-        if(precoVenda < 0){
-            return "Valor do preço de venda não pode ser menor que 0!";
+        if (!precoVenda.matches("^\\d+\\.?\\d+$")) {
+            return "Preço de Venda Inválido\nPor favor, digite novamente!\nEx: 19.20";
         }
-        if(qtdEstoque < 0){
-            return "Sua quantidade de estoque esta menor que 0, faça novas compras!";
+        if (qtdEstoque < 0) {
+            return "Quantidade no Estoque Inválida!\nPor favor, digite novamente!";
         }
-        
+
         this.nome = nome;
-        this.precoVenda = precoVenda;
-        this.precoCompra = precoCompra;
+        this.precoVenda = Float.parseFloat(precoVenda);
+        this.precoCompra = Float.parseFloat(precoCompra);
         this.categoria = categoria;
         this.qtdEstoque = qtdEstoque;
         this.idProd = id;
-        
+
         ProdutoDAO produt = new ProdutoDAO();
         produt.update(this);
         return "Mudança realizado com sucesso!!!";
     }
-    public boolean remove(Produto produto){
+
+    public boolean remove(Produto produto) {
         ProdutoDAO produt = new ProdutoDAO();
         produt.remove(produto);
         return true;
     }
-    
 
-	public long getIdProd() {
-		return idProd;
-	}
+    public long getIdProd() {
+        return idProd;
+    }
 
-	public void setIdProd(long idProd) {
-		this.idProd = idProd;
-	}
+    public void setIdProd(long idProd) {
+        this.idProd = idProd;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public float getPrecoVenda() {
-		return precoVenda;
-	}
+    public float getPrecoVenda() {
+        return precoVenda;
+    }
 
-	public void setPrecoVenda(float precoVenda) {
-		this.precoVenda = precoVenda;
-	}
+    public void setPrecoVenda(float precoVenda) {
+        this.precoVenda = precoVenda;
+    }
 
-	public float getPrecoCompra() {
-		return precoCompra;
-	}
+    public float getPrecoCompra() {
+        return precoCompra;
+    }
 
-	public void setPrecoCompra(float precoCompra) {
-		this.precoCompra = precoCompra;
-	}
+    public void setPrecoCompra(float precoCompra) {
+        this.precoCompra = precoCompra;
+    }
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
-	public int getQtdEstoque() {
-		return qtdEstoque;
-	}
+    public int getQtdEstoque() {
+        return qtdEstoque;
+    }
 
-	public void setQtdEstoque(int qtdEstoque) {
-		this.qtdEstoque = qtdEstoque;
-	}
+    public void setQtdEstoque(int qtdEstoque) {
+        this.qtdEstoque = qtdEstoque;
+    }
 
-	public int getQntVendida() {
-		return qntVendida;
-	}
+    public int getQntVendida() {
+        return qntVendida;
+    }
 
-	public void setQntVendida(int qntVendida) {
-		this.qntVendida = qntVendida;
-	}
+    public void setQntVendida(int qntVendida) {
+        this.qntVendida = qntVendida;
+    }
 }
-
-

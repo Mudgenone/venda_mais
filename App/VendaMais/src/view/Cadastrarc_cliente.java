@@ -101,12 +101,9 @@ public class Cadastrarc_cliente extends javax.swing.JFrame {
         Cliente cadastrar_cliente = new Cliente();
         String retorno = cadastrar_cliente.create(campo_nomenovocliente.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText(), campo_observacao.getText());
         JOptionPane.showMessageDialog(null, retorno);
-        
+
     }//GEN-LAST:event_botao_salvarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

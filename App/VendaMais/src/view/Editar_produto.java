@@ -197,7 +197,7 @@ public class Editar_produto extends javax.swing.JFrame {
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         if (tabela_produtos.getSelectedRow() != -1) {
-            String retorno = this.produto.update(this.id, campo_nome.getText(), Float.parseFloat(campo_precovenda.getText()), Float.parseFloat(campo_precocompra.getText()), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
+            String retorno = this.produto.update(this.id, campo_nome.getText(), campo_precovenda.getText(), campo_precocompra.getText(), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
             JOptionPane.showMessageDialog(null, retorno);
 
             readJTable2();
