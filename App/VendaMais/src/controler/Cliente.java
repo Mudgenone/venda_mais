@@ -15,19 +15,19 @@ public class Cliente {
         
     }
     public String create(String nome, String endereco, String email, String telefone, String obs){
-        if (nome.length()>50){
-            return "Seu nome tem mais de 50 caractere, por favor digite um nome menor!";
+        if (!nome.matches("(?=^.{2,60}$)^[A-Z][a-z]+(?:[ ](?:das?|dos?|de|e|[A-Z][a-z]+))*$")){
+            return "Nome inválido\nPor favor, digite novamente!";
         }
-        if (endereco.length()>255){
-            return "Seu nome tem mais de 255 caractere, por favor digite um endereço menor!";
+        if (endereco.length()>255 || !endereco.matches("^[a-z A-Z0-9.-]*$")){
+            return "Endereço Inválido\nPor favor, digite novamente!";
         }
-        if (email.length()>255){
-            return "Seu nome tem mais de 255 caractere, por favor digite um email menor!";
+        if (telefone.length()>11 || !telefone.matches("((10)|([1-9][1-9]))9[2-9][0-9]{3}[0-9]{4}")){
+            return "Telefone\nPor favor, digite apenas números!";
         }
-        if (telefone.length()>12){
-            return "Seu nome tem mais de 12 caracteres, por favor digite um numero valido EX.:82900000000!";
+        if (!email.matches("^[a-zA-Z0-9_.+-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
+            return "Email Inválido\nPor favor, digite novamente!";
         }
-        if (obs.length()>255){
+        if (obs.equals("") || obs.length()>255){
             return "Faça uma observação com até 255 caracteres!";
         }
         
@@ -42,19 +42,19 @@ public class Cliente {
         return "Cadastro realizado com sucesso!!!";
     }
     public String update(long ID, String nome, String endereco, String email, String telefone, String obs){
-        if (nome.length()>50){
-            return "Seu nome tem mais de 50 caractere, por favor digite um nome menor!";
+         if (!nome.matches("(?=^.{2,60}$)^[A-Z][a-z]+(?:[ ](?:das?|dos?|de|e|[A-Z][a-z]+))*$")){
+            return "Nome inválido\nPor favor, digite novamente!";
         }
-        if (endereco.length()>255){
-            return "Seu nome tem mais de 255 caractere, por favor digite um endereço menor!";
+        if (endereco.length()>255 || !endereco.matches("^[a-z A-Z0-9.-]*$")){
+            return "Endereço Inválido\nPor favor, digite novamente!";
         }
-        if (email.length()>255){
-            return "Seu nome tem mais de 255 caractere, por favor digite um email menor!";
+        if (telefone.length()>11 || !telefone.matches("((10)|([1-9][1-9]))9[2-9][0-9]{3}[0-9]{4}")){
+            return "Telefone\nPor favor, digite apenas números!";
         }
-        if (telefone.length()>12){
-            return "Seu nome tem mais de 12 caracteres, por favor digite um numero valido EX.:82900000000!";
+        if (!email.matches("^[a-zA-Z0-9_.+-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
+            return "Email Inválido\nPor favor, digite novamente!";
         }
-        if (obs.length()>255){
+        if (obs.equals("") || obs.length()>255){
             return "Faça uma observação com até 255 caracteres!";
         }
         

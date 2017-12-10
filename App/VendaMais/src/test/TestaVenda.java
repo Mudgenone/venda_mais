@@ -77,6 +77,8 @@ public class TestaVenda {
 			for (Produto produto: venda.getProduto()) {
 				System.out.println(produto.getNome());
 				System.out.println(produto.getCategoria().getNome());
+                                System.out.println(produto.getQntVendida());
+                                
 			}
 		}
 		*/

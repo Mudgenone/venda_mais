@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import controler.Categoria;
 import controler.Produto;
 import controler.Venda;
+import javax.swing.JOptionPane;
 
 public class VendaProd {
 	
@@ -42,7 +43,7 @@ public class VendaProd {
 		try(Connection con = new Conexao().getConnection()){
 			ArrayList<Produto> produtos = new ArrayList<Produto>();
 			
-			String sql = "select p.*,c.nome as nomecat from produto as p,categoria as c, venda_produto as vp where vp.idvenda=? and p.idprod=vp.idprod and p.idCat = c.idCat";
+			String sql = "select p.*,c.nome as nomecat,vp.qndprod from produto as p,categoria as c, venda_produto as vp where vp.idvenda=? and p.idprod=vp.idprod and p.idCat = c.idCat";
 		
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setLong(1, idVenda);
@@ -57,7 +58,8 @@ public class VendaProd {
 				produto.setPrecoCompra(rs.getFloat("precocompra"));
 				produto.setPrecoVenda(rs.getFloat("precovenda"));
 				produto.setQtdEstoque(rs.getInt("qntestoque"));
-			
+                                produto.setQntVendida(rs.getInt("qndprod"));
+                                			
 				Categoria categoria = new Categoria();
 				categoria.setIdCat(rs.getLong("idcat"));
 				categoria.setNome(rs.getString("nomecat"));
