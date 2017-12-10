@@ -89,9 +89,11 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         preco_total = new javax.swing.JLabel();
         parcelas = new javax.swing.JSpinner();
         finalizar = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         nada = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro da Venda");
         setLocationByPlatform(true);
         setResizable(false);
@@ -162,7 +164,7 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 120, 210, 150);
+        jScrollPane2.setBounds(40, 120, 200, 150);
 
         botao_addcarrinho.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         botao_addcarrinho.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,7 +173,7 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botao_addcarrinho);
-        botao_addcarrinho.setBounds(270, 160, 110, 70);
+        botao_addcarrinho.setBounds(270, 180, 110, 60);
 
         icon_voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,15 +188,16 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         getContentPane().add(quantidade);
         quantidade.setBounds(270, 120, 110, 30);
         getContentPane().add(data);
-        data.setBounds(210, 320, 90, 30);
+        data.setBounds(240, 320, 100, 30);
 
+        preco_total.setBackground(new java.awt.Color(255, 255, 255));
         preco_total.setFont(new java.awt.Font("Bitstream Vera Serif", 1, 12)); // NOI18N
         getContentPane().add(preco_total);
-        preco_total.setBounds(130, 290, 70, 20);
+        preco_total.setBounds(120, 280, 100, 30);
 
         parcelas.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         getContentPane().add(parcelas);
-        parcelas.setBounds(100, 320, 60, 30);
+        parcelas.setBounds(120, 320, 60, 30);
 
         finalizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -204,7 +207,19 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
         getContentPane().add(finalizar);
         finalizar.setBounds(400, 290, 240, 70);
 
-        nada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda – 3.png"))); // NOI18N
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        getContentPane().add(jButton2);
+        jButton2.setBounds(120, 280, 100, 30);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(240, 320, 100, 30);
+
+        nada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadastrar venda – 3_1.png"))); // NOI18N
         getContentPane().add(nada);
         nada.setBounds(0, 0, 650, 370);
 
@@ -214,6 +229,7 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
     private void icon_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_voltarMouseClicked
         Cadastrar_venda tela = new Cadastrar_venda();
         tela.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void botao_addcarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_addcarrinhoMouseClicked
@@ -303,6 +319,8 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
     private javax.swing.JLabel data;
     private javax.swing.JLabel finalizar;
     private javax.swing.JLabel icon_voltar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nada;
