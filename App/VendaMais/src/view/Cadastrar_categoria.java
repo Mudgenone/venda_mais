@@ -1,6 +1,6 @@
 package view;
 
-import controler.Categoria;
+import controler.CategoriaControl;
 import javax.swing.JOptionPane;
 
 public class Cadastrar_categoria extends javax.swing.JFrame {
@@ -57,7 +57,7 @@ public class Cadastrar_categoria extends javax.swing.JFrame {
     }//GEN-LAST:event_icon_voltarMouseClicked
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
-        Categoria nova_categoria = new Categoria();
+        CategoriaControl nova_categoria = new CategoriaControl();
         String retorno = nova_categoria.create(campo_nomecategoria.getText());
         JOptionPane.showMessageDialog(null, retorno);
     }//GEN-LAST:event_botao_salvarMouseClicked

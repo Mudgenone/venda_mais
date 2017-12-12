@@ -1,7 +1,7 @@
 package view;
 
-import controler.Categoria;
-import controler.Produto;
+import model.Categoria;
+import controler.ProdutoControl;
 import dao.CategoriaDAO;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -145,7 +145,7 @@ public class Cadastrar_produto extends javax.swing.JFrame {
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         if (tabela_categoria.getSelectedRow() != -1) {
-            Produto cadastrar_produto = new Produto();
+            ProdutoControl cadastrar_produto = new ProdutoControl();
             String retorno = cadastrar_produto.create(campo_nomeproduto.getText(), campo_precovenda.getText(), campo_precocompra.getText(), this.categoria, Integer.parseInt(quantidade.getValue().toString()));
             JOptionPane.showMessageDialog(null, retorno);
         } else {

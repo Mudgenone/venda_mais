@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import controler.Categoria;
-import controler.Produto;
+import model.Categoria;
+import model.Produto;
+import controler.ProdutoControl;
 import dao.CategoriaDAO;
 import dao.ProdutoDAO;
 import java.util.List;
@@ -18,8 +14,9 @@ public class Editar_produto extends javax.swing.JFrame {
 
     Categoria categoria = new Categoria();
     Produto produto = new Produto();
+    ProdutoControl pdc = new ProdutoControl();
     ProdutoDAO produtoDAO = new ProdutoDAO();
-    List <Produto> listaProd = produtoDAO.getList();
+    List<Produto> listaProd = produtoDAO.getList();
     long id;
 
     public Editar_produto() {
@@ -28,9 +25,9 @@ public class Editar_produto extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tabela_categoria.getModel();
         tabela_categoria.setRowSorter(new TableRowSorter(modelo));
-        tabela_produtos.getColumnModel().getColumn(0).setMinWidth(0); 
+        tabela_produtos.getColumnModel().getColumn(0).setMinWidth(0);
         tabela_produtos.getColumnModel().getColumn(0).setMaxWidth(0);
-        tabela_categoria.getColumnModel().getColumn(0).setMinWidth(0); 
+        tabela_categoria.getColumnModel().getColumn(0).setMinWidth(0);
         tabela_categoria.getColumnModel().getColumn(0).setMaxWidth(0);
         this.setLocationRelativeTo(null);
         readJTable();
@@ -55,7 +52,7 @@ public class Editar_produto extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tabela_produtos.getModel();
         modelo.setNumRows(0);
-     
+
         this.listaProd.forEach((c) -> {
             modelo.addRow(new Object[]{
                 c.getIdProd(),
@@ -191,15 +188,17 @@ public class Editar_produto extends javax.swing.JFrame {
 
     private void botao_voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_voltarMouseClicked
         Principal_alterardados tela = new Principal_alterardados();
-        tela.setVisible(true);       
+        tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botao_voltarMouseClicked
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         if (tabela_produtos.getSelectedRow() != -1) {
-            String retorno = this.produto.update(this.id, campo_nome.getText(), campo_precovenda.getText(), campo_precocompra.getText(), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
+            System.out.println(this.id);
+            String retorno = this.pdc.update(this.id, campo_nome.getText(), campo_precovenda.getText(), campo_precocompra.getText(), this.categoria, Integer.parseInt(campo_qtdestoque.getText()));
             JOptionPane.showMessageDialog(null, retorno);
 
+            listaProd = produtoDAO.getList();
             readJTable2();
 
             campo_nome.setText("");
@@ -241,22 +240,21 @@ public class Editar_produto extends javax.swing.JFrame {
             campo_precocompra.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 3).toString());
             campo_precovenda.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 4).toString());
             campo_qtdestoque.setText(tabela_produtos.getValueAt(tabela_produtos.getSelectedRow(), 2).toString());
-        } 
+        }
     }//GEN-LAST:event_tabela_produtosMouseClicked
 
     private void botao_deletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_deletarMouseClicked
         if (tabela_produtos.getSelectedRow() != -1) {
-            Produto produto = new Produto();
-            if (produto.remove(this.produto)) {
+            if (this.pdc.remove(this.produto)) {
                 JOptionPane.showMessageDialog(null, "Deletado com sucesso");
             }
-
+            listaProd = produtoDAO.getList();
             readJTable2();
 
             campo_nome.setText("");
             campo_precocompra.setText("");
             campo_precovenda.setText("");
-            campo_qtdestoque.setText(""); 
+            campo_qtdestoque.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Escolha um produto!");
         }
@@ -292,7 +290,7 @@ public class Editar_produto extends javax.swing.JFrame {
             if (c.getIdCat() == ID) {
                 this.categoria = c;
             }
-        }); 
+        });
     }//GEN-LAST:event_tabela_categoriaKeyReleased
 
     public static void main(String args[]) {

@@ -1,10 +1,11 @@
 package view;
 
-import controler.Cliente;
+import controler.ClienteControl;
 import dao.ClienteDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Cliente;
 
 public class Editar_cliente extends javax.swing.JFrame {
     
@@ -152,7 +153,7 @@ public class Editar_cliente extends javax.swing.JFrame {
 
     private void botao_deletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_deletarMouseClicked
         if (tabela_cliente.getSelectedRow() != -1) {
-            Cliente deletar = new Cliente();
+            ClienteControl deletar = new ClienteControl();
             if (deletar.remove(this.cliente)) {
                 JOptionPane.showMessageDialog(null, "Deletado com sucesso");
             }
@@ -212,7 +213,7 @@ public class Editar_cliente extends javax.swing.JFrame {
 
     private void botao_salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_salvarMouseClicked
         if (tabela_cliente.getSelectedRow() != -1) {
-            Cliente editar_cliente = new Cliente();
+            ClienteControl editar_cliente = new ClienteControl();
             System.out.println(this.id);
             String retorno = editar_cliente.update(this.id, campo_nome.getText(), campo_endereco.getText(), campo_email.getText(), campo_telefone.getText(), campo_observacao.getText());
             JOptionPane.showMessageDialog(null, retorno);

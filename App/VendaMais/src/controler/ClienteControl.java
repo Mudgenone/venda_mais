@@ -1,25 +1,17 @@
 package controler;
 
 import dao.ClienteDAO;
+import model.Cliente;
 
-public class Cliente {
-
-    private long id;
-    private String nome;
-    private String endereco;
-    private String email;
-    private String telefone;
-    private String obs;
-
-    public void comprar(Produto produto) {
+public class ClienteControl {
+    /* implementação futura
+    public void receberPagamento(Venda venda, double valor) {
 
     }
-
-    public void pagar(Venda venda, double valor) {
-
-    }
-
+    */
+    
     public String create(String nome, String endereco, String email, String telefone, String obs) {
+        Cliente cl = new Cliente();
         if (!nome.matches("(?=^.{2,60}$)^[A-Z][a-z]+(?:[ ](?:das?|dos?|de|e|[A-Z][a-z]+))*$")) {
             return "Nome inválido\nPor favor, digite novamente!";
         }
@@ -36,18 +28,19 @@ public class Cliente {
             return "Faça uma observação com até 255 caracteres!";
         }
 
-        this.nome = nome;
-        this.endereco = endereco;
-        this.email = email;
-        this.telefone = telefone;
-        this.obs = obs;
+        cl.setNome(nome);
+        cl.setEndereco(endereco);
+        cl.setEmail(email);
+        cl.setTelefone(telefone);
+        cl.setObs(obs);
 
         ClienteDAO client = new ClienteDAO();
-        client.save(this);
+        client.save(cl);
         return "Cadastro realizado com sucesso!!!";
     }
 
     public String update(long ID, String nome, String endereco, String email, String telefone, String obs) {
+        Cliente cl = new Cliente();
         if (!nome.matches("(?=^.{2,60}$)^[A-Z][a-z]+(?:[ ](?:das?|dos?|de|e|[A-Z][a-z]+))*$")) {
             return "Nome inválido\nPor favor, digite novamente!";
         }
@@ -64,15 +57,15 @@ public class Cliente {
             return "Faça uma observação com até 255 caracteres!";
         }
 
-        this.id = ID;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.email = email;
-        this.telefone = telefone;
-        this.obs = obs;
+        cl.setId(ID);
+        cl.setNome(nome);
+        cl.setEndereco(endereco);
+        cl.setEmail(email);
+        cl.setTelefone(telefone);
+        cl.setObs(obs);
 
         ClienteDAO client = new ClienteDAO();
-        client.update(this);
+        client.update(cl);
         return "Mudança feita com sucesso!!!";
     }
 
@@ -81,53 +74,4 @@ public class Cliente {
         client.remove(cliente);
         return true;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
 }

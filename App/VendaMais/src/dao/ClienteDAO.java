@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import controler.Cliente;
+import model.Cliente;
 
 public class ClienteDAO {
 	

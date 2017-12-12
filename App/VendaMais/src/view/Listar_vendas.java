@@ -1,6 +1,6 @@
 package view;
 
-import controler.Venda;
+import model.Venda;
 import dao.VendaDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

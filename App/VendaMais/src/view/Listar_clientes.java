@@ -1,8 +1,10 @@
 package view;
 
 import dao.ClienteDAO;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Cliente;
 
 public class Listar_clientes extends javax.swing.JFrame {
     
@@ -20,8 +22,9 @@ public class Listar_clientes extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabela_cliente.getModel();
         modelo.setNumRows(0);
         ClienteDAO cliente = new ClienteDAO();
-
-        cliente.getList().forEach((c) -> {
+        List <Cliente> listaCliente = cliente.getList();
+        
+        listaCliente.forEach((c) -> {
             modelo.addRow(new Object[]{
                 c.getNome(),
                 c.getTelefone(),

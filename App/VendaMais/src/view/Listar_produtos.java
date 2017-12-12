@@ -1,8 +1,10 @@
 package view;
 
 import dao.ProdutoDAO;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.Produto;
 
 public class Listar_produtos extends javax.swing.JFrame {
 
@@ -22,8 +24,8 @@ public class Listar_produtos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabela_produtos.getModel();
         modelo.setNumRows(0);
         ProdutoDAO produto = new ProdutoDAO();
-
-        produto.getList().forEach((c) -> {
+        List<Produto> listaProd = produto.getList();
+        listaProd.forEach((c) -> {
             modelo.addRow(new Object[]{
                 c.getNome(),
                 c.getQtdEstoque(),

@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import controler.Categoria;
-import controler.Produto;
+import model.Produto;
+import model.Categoria;
 
 public class ProdutoDAO {
 	
@@ -38,7 +38,7 @@ public class ProdutoDAO {
 	
 	public ArrayList<Produto> getList() {
 		try (Connection con = new Conexao().getConnection()) {
-			ArrayList<Produto> produtos = new ArrayList<Produto>();
+			ArrayList<Produto> produtos = new ArrayList<>();
 
 			PreparedStatement stmt = con.prepareStatement("SELECT p.*, c.nome as nomecat FROM produto as p,categoria as c where p.idCat = c.idCat");
 			ResultSet rs = stmt.executeQuery();

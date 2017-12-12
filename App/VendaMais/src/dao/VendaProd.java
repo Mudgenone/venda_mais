@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import controler.Categoria;
-import controler.Produto;
-import controler.Venda;
-import javax.swing.JOptionPane;
+import model.Categoria;
+import model.Produto;
+import model.Venda;
 
 public class VendaProd {
 	
@@ -41,7 +40,7 @@ public class VendaProd {
 	
 	public ArrayList <Produto> getProdutosVenda(long idVenda ) {
 		try(Connection con = new Conexao().getConnection()){
-			ArrayList<Produto> produtos = new ArrayList<Produto>();
+			ArrayList<Produto> produtos = new ArrayList<>();
 			
 			String sql = "select p.*,c.nome as nomecat,vp.qndprod from produto as p,categoria as c, venda_produto as vp where vp.idvenda=? and p.idprod=vp.idprod and p.idCat = c.idCat";
 		

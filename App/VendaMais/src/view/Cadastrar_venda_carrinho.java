@@ -1,8 +1,8 @@
 package view;
 
-import controler.Cliente;
-import controler.Produto;
-import controler.Venda;
+import model.Cliente;
+import model.Produto;
+import controler.VendaControl;
 import dao.ProdutoDAO;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -271,7 +271,7 @@ public class Cadastrar_venda_carrinho extends javax.swing.JFrame {
 
     private void finalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizarMouseClicked
         if (tabela_carrinho.getRowCount() != 0) {
-            Venda venda = new Venda();
+            VendaControl venda = new VendaControl();
             String mostra = venda.create(this.cliente, Integer.parseInt(parcelas.getValue().toString()), this.total, this.produtos);
             JOptionPane.showMessageDialog(null, mostra);
             Cadastrar_venda tela = new Cadastrar_venda();

@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import controler.Cliente;
-import controler.Produto;
-import controler.Venda;
+import model.Cliente;
+import model.Produto;
+import model.Venda;
 
 public class VendaDAO {
 	
@@ -48,7 +48,7 @@ public class VendaDAO {
 	
 	public ArrayList<Venda> getList() {
 		try (Connection con = new Conexao().getConnection()) {
-			ArrayList<Venda> vendas = new ArrayList<Venda>();
+			ArrayList<Venda> vendas = new ArrayList<>();
 
 			PreparedStatement stmt = con.prepareStatement("select v.*,c.* from venda as v, cliente as c where c.idCliente = v.idCliente");
 			ResultSet rs = stmt.executeQuery();

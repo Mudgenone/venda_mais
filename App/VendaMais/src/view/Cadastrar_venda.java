@@ -1,6 +1,6 @@
 package view;
 
-import controler.Cliente;
+import model.Cliente;
 import dao.ClienteDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

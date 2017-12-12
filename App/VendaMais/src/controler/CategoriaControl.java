@@ -1,22 +1,21 @@
 package controler;
 
 import dao.CategoriaDAO;
+import model.Categoria;
 
-public class Categoria {
-
-    private long idCat;
-    private String nome;
+public class CategoriaControl {
     CategoriaDAO categoria = new CategoriaDAO();
 
     public String create(String nome) {
+        Categoria cat = new Categoria();
         try {
             if (nome.equals("") || nome.length() > 20) {
                 return "Nome inválido\nPor Favor, digite novamente!";
             }
 
-            this.nome = nome;
+            cat.setNome(nome);
 
-            categoria.save(this);
+            categoria.save(cat);
             return "Categoria salva com sucesso!!!";
         } catch (RuntimeException e) {
             System.err.println(e);
@@ -26,15 +25,16 @@ public class Categoria {
     }
 
     public String update(long idCat, String nome) {
+        Categoria cat = new Categoria();
         try {
             if (nome.equals("") || nome.length() > 20) {
                 return "Nome inválido\nPor Favor, digite novamente!";
             }
 
-            this.idCat = idCat;
-            this.nome = nome;
+            cat.setIdCat(idCat);
+            cat.setNome(nome);
 
-            categoria.update(this);
+            categoria.update(cat);
             return "Atualização realizada com sucesso!!!";
         } catch (RuntimeException e) {
             System.err.println(e);
@@ -45,7 +45,7 @@ public class Categoria {
 
     public String remove(Categoria categoria) {
         try {
-            categoria.remove(categoria);
+            this.categoria.remove(categoria);
             return "Categoria foi apagada com sucesso!!!";
         } catch (RuntimeException e) {
             System.err.println(e);
@@ -53,21 +53,4 @@ public class Categoria {
         }
 
     }
-
-    public long getIdCat() {
-        return idCat;
-    }
-
-    public void setIdCat(long idCat) {
-        this.idCat = idCat;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
 }
